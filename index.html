@@ -18,6 +18,8 @@
 <body>
     <!-- Navigation Header -->
     <nav class="navbar">
+        <!-- Mobile menu toggle using checkbox hack -->
+        <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">
         <div class="nav-container">
             <a href="#" class="logo">
                 <span class="logo-bracket">&lt;</span>
@@ -36,11 +38,11 @@
                 <span>Login</span>
             </button>
             
-            <button class="mobile-menu-toggle">
+            <label for="mobile-menu-toggle" class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
-            </button>
+            </label>
         </div>
     </nav>
 
@@ -53,9 +55,9 @@
                         Be a part of our
                         <br>
                         <span class="dynamic-text">
-                            <span class="text-wrapper">
-                                <span class="letters">Future!</span>
-                            </span>
+                            <span class="text-word" data-text="Future!">Future!</span>
+                            <span class="text-word" data-text="Army!">Army!</span>
+                            <span class="text-word" data-text="Family!">Family!</span>
                         </span>
                     </h1>
                     
@@ -125,7 +127,32 @@
                             </div>
                         </div>
                         <div class="code-body">
-                            <pre class="code-content" id="code-editor"><code></code></pre>
+                            <pre class="code-content"><code class="animated-code">
+<span class="code-line" data-delay="0.5s"><span class="line-no">01</span> <span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span></span>
+<span class="code-line" data-delay="1s"><span class="line-no">02</span> <span class="keyword">#include</span> <span class="string">&lt;vector&gt;</span></span>
+<span class="code-line" data-delay="1.5s"><span class="line-no">03</span> <span class="keyword">#include</span> <span class="string">&lt;algorithm&gt;</span></span>
+<span class="code-line" data-delay="2s"><span class="line-no">04</span> </span>
+<span class="code-line" data-delay="2.5s"><span class="line-no">05</span> <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="namespace">std</span>;</span>
+<span class="code-line" data-delay="3s"><span class="line-no">06</span> </span>
+<span class="code-line" data-delay="3.5s"><span class="line-no">07</span> <span class="comment">// Binary Search Implementation</span></span>
+<span class="code-line" data-delay="4s"><span class="line-no">08</span> <span class="keyword">int</span> <span class="function">binarySearch</span>(<span class="type">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> target) {</span>
+<span class="code-line" data-delay="4.5s"><span class="line-no">09</span>     <span class="keyword">int</span> left = <span class="number">0</span>, right = arr.<span class="function">size</span>() - <span class="number">1</span>;</span>
+<span class="code-line" data-delay="5s"><span class="line-no">10</span>     </span>
+<span class="code-line" data-delay="5.5s"><span class="line-no">11</span>     <span class="keyword">while</span> (left &lt;= right) {</span>
+<span class="code-line" data-delay="6s"><span class="line-no">12</span>         <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span>
+<span class="code-line" data-delay="6.5s"><span class="line-no">13</span>         </span>
+<span class="code-line" data-delay="7s"><span class="line-no">14</span>         <span class="keyword">if</span> (arr[mid] == target) {</span>
+<span class="code-line" data-delay="7.5s"><span class="line-no">15</span>             <span class="keyword">return</span> mid; <span class="comment">// Found</span></span>
+<span class="code-line" data-delay="8s"><span class="line-no">16</span>         }</span>
+<span class="code-line" data-delay="8.5s"><span class="line-no">17</span>         <span class="keyword">else if</span> (arr[mid] &lt; target) {</span>
+<span class="code-line" data-delay="9s"><span class="line-no">18</span>             left = mid + <span class="number">1</span>;</span>
+<span class="code-line" data-delay="9.5s"><span class="line-no">19</span>         } <span class="keyword">else</span> {</span>
+<span class="code-line" data-delay="10s"><span class="line-no">20</span>             right = mid - <span class="number">1</span>;</span>
+<span class="code-line" data-delay="10.5s"><span class="line-no">21</span>         }</span>
+<span class="code-line" data-delay="11s"><span class="line-no">22</span>     }</span>
+<span class="code-line" data-delay="11.5s"><span class="line-no">23</span>     <span class="keyword">return</span> -<span class="number">1</span>; <span class="comment">// Not found</span></span>
+<span class="code-line" data-delay="12s"><span class="line-no">24</span> }</span>
+                            </code></pre>
                         </div>
                     </div>
                     
@@ -144,227 +171,6 @@
         <div class="hero-bg-pattern"></div>
     </section>
 
-    <script>
-        // Typing animation for rotating text
-        const textArray = ['Future!', 'Army!', 'Family!'];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
-        
-        const dynamicText = document.querySelector('.letters');
-        
-        function typeEffect() {
-            const currentText = textArray[textIndex];
-            
-            if (isDeleting) {
-                dynamicText.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 50;
-            } else {
-                dynamicText.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 100;
-            }
-            
-            if (!isDeleting && charIndex === currentText.length) {
-                typingSpeed = 2000; // Pause at end
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % textArray.length;
-                typingSpeed = 500; // Pause before typing new word
-            }
-            
-            setTimeout(typeEffect, typingSpeed);
-        }
-        
-        // Start typing effect
-        typeEffect();
-        
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-        
-        // Active navigation link on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-        
-        // Mobile menu toggle
-        const mobileToggle = document.querySelector('.mobile-menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        mobileToggle?.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-        });
-        
-        // Code Editor Typing Animation
-        const codeLines = [
-            { lineNo: '01', content: '<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>' },
-            { lineNo: '02', content: '<span class="keyword">#include</span> <span class="string">&lt;vector&gt;</span>' },
-            { lineNo: '03', content: '<span class="keyword">#include</span> <span class="string">&lt;algorithm&gt;</span>' },
-            { lineNo: '04', content: '' },
-            { lineNo: '05', content: '<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="namespace">std</span>;' },
-            { lineNo: '06', content: '' },
-            { lineNo: '07', content: '<span class="comment">// Binary Search Implementation</span>' },
-            { lineNo: '08', content: '<span class="keyword">int</span> <span class="function">binarySearch</span>(<span class="type">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> target) {' },
-            { lineNo: '09', content: '    <span class="keyword">int</span> left = <span class="number">0</span>, right = arr.<span class="function">size</span>() - <span class="number">1</span>;' },
-            { lineNo: '10', content: '    ' },
-            { lineNo: '11', content: '    <span class="keyword">while</span> (left <= right) {' },
-            { lineNo: '12', content: '        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;' },
-            { lineNo: '13', content: '        ' },
-            { lineNo: '14', content: '        <span class="keyword">if</span> (arr[mid] == target) {' },
-            { lineNo: '15', content: '            <span class="keyword">return</span> mid; <span class="comment">// Found the target</span>' },
-            { lineNo: '16', content: '        }' },
-            { lineNo: '17', content: '        <span class="keyword">else if</span> (arr[mid] < target) {' },
-            { lineNo: '18', content: '            left = mid + <span class="number">1</span>; <span class="comment">// Search right half</span>' },
-            { lineNo: '19', content: '        }' },
-            { lineNo: '20', content: '        <span class="keyword">else</span> {' },
-            { lineNo: '21', content: '            right = mid - <span class="number">1</span>; <span class="comment">// Search left half</span>' },
-            { lineNo: '22', content: '        }' },
-            { lineNo: '23', content: '    }' },
-            { lineNo: '24', content: '    <span class="keyword">return</span> -<span class="number">1</span>; <span class="comment">// Not found</span>' },
-            { lineNo: '25', content: '}' }
-        ];
-        
-        let currentLineIndex = 0;
-        let currentCharIndex = 0;
-        let isTyping = true;
-        const codeEditor = document.getElementById('code-editor').querySelector('code');
-        let typedContent = [];
-        
-        function typeCode() {
-            if (currentLineIndex >= codeLines.length) {
-                // Reset and start over after a pause
-                setTimeout(() => {
-                    currentLineIndex = 0;
-                    currentCharIndex = 0;
-                    typedContent = [];
-                    codeEditor.innerHTML = '';
-                    typeCode();
-                }, 3000);
-                return;
-            }
-            
-            const currentLine = codeLines[currentLineIndex];
-            const fullLineHTML = `<span class="line"><span class="line-no">${currentLine.lineNo}</span> ${currentLine.content}</span>`;
-            
-            // Create a temporary element to extract text content for typing effect
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = fullLineHTML;
-            const textContent = tempDiv.textContent;
-            
-            if (currentCharIndex <= textContent.length) {
-                // Build the current line with typing effect
-                let displayHTML = typedContent.join('\n');
-                if (typedContent.length > 0 && currentCharIndex === 0) {
-                    displayHTML += '\n';
-                }
-                
-                // For the current line being typed
-                if (currentCharIndex > 0) {
-                    const lineStart = `<span class="line"><span class="line-no">${currentLine.lineNo}</span> `;
-                    const lineContent = currentLine.content;
-                    
-                    // Calculate how much of the actual content to show
-                    const visibleLength = currentCharIndex - currentLine.lineNo.length - 1;
-                    if (visibleLength > 0) {
-                        // Create a partial version of the styled content
-                        const partialContent = truncateHTMLContent(lineContent, visibleLength);
-                        displayHTML += lineStart + partialContent + '</span>';
-                    } else {
-                        displayHTML += lineStart + '</span>';
-                    }
-                }
-                
-                // Add cursor
-                displayHTML += '<span class="typing-cursor">|</span>';
-                codeEditor.innerHTML = displayHTML;
-                
-                currentCharIndex++;
-                setTimeout(typeCode, Math.random() * 50 + 30); // Variable typing speed
-            } else {
-                // Line completed
-                typedContent.push(fullLineHTML);
-                currentLineIndex++;
-                currentCharIndex = 0;
-                
-                // Update display without cursor briefly
-                codeEditor.innerHTML = typedContent.join('\n');
-                
-                // Add a small pause between lines
-                setTimeout(typeCode, 100);
-            }
-        }
-        
-        // Helper function to truncate HTML content while preserving tags
-        function truncateHTMLContent(htmlContent, maxLength) {
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = htmlContent;
-            const textContent = tempDiv.textContent;
-            
-            if (textContent.length <= maxLength) {
-                return htmlContent;
-            }
-            
-            // Simple approach: return the HTML up to the character limit
-            let charCount = 0;
-            let result = '';
-            let inTag = false;
-            let currentTag = '';
-            
-            for (let i = 0; i < htmlContent.length; i++) {
-                const char = htmlContent[i];
-                
-                if (char === '<') {
-                    inTag = true;
-                    currentTag = char;
-                } else if (char === '>') {
-                    inTag = false;
-                    result += currentTag + char;
-                    currentTag = '';
-                } else if (inTag) {
-                    currentTag += char;
-                } else {
-                    if (charCount < maxLength) {
-                        result += char;
-                        charCount++;
-                    } else {
-                        break;
-                    }
-                }
-            }
-            
-            // Close any open tags
-            if (result.includes('<span')) {
-                const openSpans = (result.match(/<span/g) || []).length;
-                const closeSpans = (result.match(/<\/span>/g) || []).length;
-                for (let i = 0; i < openSpans - closeSpans; i++) {
-                    result += '</span>';
-                }
-            }
-            
-            return result;
-        }
-        
-        // Start typing animation after a short delay
-        setTimeout(() => {
-            typeCode();
-        }, 1500);
-    </script>
+    <!-- No JavaScript! Pure CSS animations only -->
 </body>
 </html>
