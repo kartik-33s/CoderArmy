@@ -245,9 +245,9 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.5rem, 5vw, 3rem);
     font-weight: 800;
-    line-height: 1.0; /* Decreased line height */
+    line-height: 1.5; /* Decreased line height */
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
 }
@@ -256,8 +256,9 @@ body {
     color: var(--primary-light);
     position: relative;
     display: inline-block;
-    min-width: 150px;
+    min-width: 200px; /* Increased width for longer words */
     height: 1.2em;
+    padding-right: 40px; /* More padding for cursor space */
 }
 
 /* CSS-only rotating text animation */
@@ -270,6 +271,7 @@ body {
     width: 0;
     display: inline-block;
     animation: rotateWord 9s linear infinite;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .text-word:nth-child(1) {
@@ -296,11 +298,11 @@ body {
     }
     10% {
         opacity: 1;
-        width: 100%;
+        width: 150px; /* Fixed width to ensure all text is visible */
     }
     27% {
         opacity: 1;
-        width: 100%;
+        width: 150px; /* Keep fixed width while visible */
     }
     30% {
         opacity: 1;
@@ -320,9 +322,10 @@ body {
 .dynamic-text::after {
     content: '|';
     position: absolute;
-    right: -10px;
+    right: 15px; /* Move cursor 2-3 spaces after text */
     color: var(--primary-light);
     animation: cursorBlink 1s infinite;
+    font-weight: 300;
 }
 
 @keyframes cursorBlink {

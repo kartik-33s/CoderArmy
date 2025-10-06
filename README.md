@@ -10,7 +10,7 @@
 - **Responsive Design**: Fully responsive across desktop, tablet, and mobile devices
 
 ### Animations
-- **Typing Effect**: Dynamic text rotation between "Future!", "Army!", and "Family!"
+- **Typing Effect**: Dynamic text rotation between "Future", "Army", and "Family"
 - **Live Code Editor**: Animated typing of binary search implementation in C++
 - **Hover Effects**: Interactive elements with smooth transitions
 - **Floating Elements**: Animated background decorations
@@ -64,7 +64,7 @@ All animations and interactions work without a single line of JavaScript!
    - macOS-style window controls
 
 2. **CSS-Only Text Rotation**
-   - Rotating text with typing effect (Future! → Army! → Family!)
+   - Rotating text with typing effect (Future → Army → Family)
    - Width-based animation for typing effect
    - CSS keyframes for smooth transitions
    - Blinking cursor using CSS animations
