@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coder Army - Learning Sections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            color: #b8b8d1;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .features-section {
+            padding: 80px 20px;
+            background: #0a0a0a;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .features-header h2 .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-header p {
+            color: #b8b8d1;
+            font-size: 1rem;
+        }
+
+        .features-header p .highlight-text {
+            color: white;
+            font-weight: 600;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .course-lectures {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .course-author {
+            color: #8888aa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .course-description {
+            color: #b8b8d1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .course-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .course-tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .view-all-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin: 50px auto 0;
+            display: block;
+            width: fit-content;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .view-all-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .features-header h2 {
+                font-size: 2rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Ready to Start Your Learning Journey?</h1>
+        <p>Join thousands of students who have transformed their careers<br>with our expert-designed courses.</p>
+        <a href="#" class="cta-button">Explore All Courses</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-header">
+            <h2>What Will You <span class="highlight">Get?</span></h2>
+            <p>Explore our comprehensive <span class="highlight-text">free</span> courses designed to help you master the skills<br>needed for your dream job</p>
+        </div>
+
+        <div class="courses-grid">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <div class="course-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <span class="course-badge">BEGINNER</span>
+                    <span class="course-lectures">22 lectures</span>
+                    WEB DEVELOPMENT
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">Web Development Full Course</h3>
+                    <p class="course-author">by Rohit Negi</p>
+                    <p class="course-description">Build Anything: The All-in-One Web Development Bootcamp.</p>
+                    <div class="course-tags">
+                        <span class="course-tag">WEB DEVELOPMENT</span>
+                        <span class="course-tag">MERN STACK</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+                <div class="course-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <span class="course-badge">INTERMEDIATE</span>
+                    <span class="course-lectures">9 lectures</span>
+                    GEN AI
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">GenAI Course</h3>
+                    <p class="course-author">by Rohit Negi</p>
+                    <p class="course-description">Unlocking the Secrets of Generative AI: From Concepts to Code.</p>
+                    <div class="course-tags">
+                        <span class="course-tag">GENERATIVE AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+                <div class="course-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <span class="course-badge">BEGINNER</span>
+                    <span class="course-lectures">40 lectures</span>
+                    SYSTEM DESIGN
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">System Design Course</h3>
+                    <p class="course-author">by Aditya Tandon</p>
+                    <p class="course-description">Learn Low-Level Design and System Design concepts from scratch to advanced.</p>
+                    <div class="course-tags">
+                        <span class="course-tag">SYSTEM DESIGN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 4 -->
+            <div class="course-card">
+                <div class="course-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <span class="course-badge">BEGINNER</span>
+                    <span class="course-lectures">163 lectures</span>
+                    PROGRAMMING
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">DSA Course in C++</h3>
+                    <p class="course-author">by Rohit Negi</p>
+                    <p class="course-description">The Ultimate Guide to Mastering Data Structures & Algorithms in C++.</p>
+                    <div class="course-tags">
+                        <span class="course-tag">DATA STRUCTURES</span>
+                        <span class="course-tag">ALGORITHMS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="view-all-button">View All Courses →</a>
+    </section>
+</body>
+</html>
