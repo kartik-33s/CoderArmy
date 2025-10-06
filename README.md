@@ -1,6 +1,6 @@
 # Coder Army Landing Page
 
-A modern, animated landing page for Coder Army - a coding education platform. Built with pure HTML, CSS, and JavaScript.
+🚀 **100% JavaScript-Free!** A modern, animated landing page for Coder Army - a coding education platform. Built with pure HTML and CSS only - NO JavaScript!
 
 ## 🌟 Features
 
@@ -30,8 +30,8 @@ Visit the live site: [Coder Army](https://kartik-33s.github.io/CoderArmy/)
 ## 💻 Technologies Used
 
 - HTML5
-- CSS3 (with CSS Variables)
-- Vanilla JavaScript
+- CSS3 (with CSS Variables & Animations)
+- **ZERO JavaScript** - All animations are pure CSS!
 - Font Awesome Icons
 - Google Fonts (Inter)
 
@@ -53,22 +53,27 @@ Visit the live site: [Coder Army](https://kartik-33s.github.io/CoderArmy/)
 
 ## 🔥 Key Features
 
-1. **Animated Code Editor**
+### ⚡ **ZERO JavaScript Implementation**
+All animations and interactions work without a single line of JavaScript!
+
+1. **CSS-Only Animated Code Editor**
    - Realistic IDE interface
    - Syntax highlighting
-   - Auto-typing animation
-   - Line numbers
+   - Pure CSS typing animation with delays
+   - Line-by-line reveal effect
    - macOS-style window controls
 
-2. **Dynamic Text Animation**
-   - Rotating text with typing effect
-   - Smooth transitions between words
-   - Blinking cursor animation
+2. **CSS-Only Text Rotation**
+   - Rotating text with typing effect (Future! → Army! → Family!)
+   - Width-based animation for typing effect
+   - CSS keyframes for smooth transitions
+   - Blinking cursor using CSS animations
 
-3. **Responsive Navigation**
-   - Sticky header with blur effect
-   - Mobile hamburger menu
-   - Active link highlighting
+3. **CSS-Powered Navigation**
+   - Sticky header with backdrop-filter
+   - CSS checkbox hack for mobile menu toggle
+   - Pure CSS hover states
+   - Smooth scroll with CSS scroll-behavior
 
 ## 🛠️ Setup & Installation
 
