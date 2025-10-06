@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coder Army | Learn Coding in India</title>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-bracket">&lt;</span>
+                <span class="logo-text">Coder Army</span>
+            </a>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#tutorials" class="nav-link">Tutorials</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#contact" class="nav-link">Contact Us</a>
+            </div>
+            
+            <button class="login-button">
+                <i class="fas fa-right-to-bracket"></i>
+                <span>Login</span>
+            </button>
+            
+            <button class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1 class="hero-title">
+                        Be a part of our
+                        <br>
+                        <span class="dynamic-text">
+                            <span class="text-wrapper">
+                                <span class="letters">Future!</span>
+                            </span>
+                        </span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        A community of coders, making the world a better place. Learn, build, and grow with the best developers in the industry.
+                    </p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary">
+                            Start Paid Learning
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fab fa-youtube"></i>
+                            Watch Demo
+                        </button>
+                    </div>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="stat-value">202K+</div>
+                            <div class="stat-label">Students</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="stat-value">4+</div>
+                            <div class="stat-label">Courses</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-chalkboard-user"></i>
+                            </div>
+                            <div class="stat-value">2+</div>
+                            <div class="stat-label">Experienced Instructors</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-right">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="window-controls">
+                                <span class="control red"></span>
+                                <span class="control yellow"></span>
+                                <span class="control green"></span>
+                            </div>
+                            <span class="file-name">CoderArmy.cpp</span>
+                            <div class="live-indicator">
+                                <span class="live-dot"></span>
+                                <span>Live Coding</span>
+                            </div>
+                        </div>
+                        <div class="code-body">
+                            <pre class="code-content" id="code-editor"><code></code></pre>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="floating-elements">
+                        <div class="float-elem elem-1"></div>
+                        <div class="float-elem elem-2"></div>
+                        <div class="float-elem elem-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background Gradient -->
+        <div class="hero-bg-gradient"></div>
+        <div class="hero-bg-pattern"></div>
+    </section>
+
+    <script>
+        // Typing animation for rotating text
+        const textArray = ['Future!', 'Army!', 'Family!'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        
+        const dynamicText = document.querySelector('.letters');
+        
+        function typeEffect() {
+            const currentText = textArray[textIndex];
+            
+            if (isDeleting) {
+                dynamicText.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                dynamicText.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                typingSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textArray.length;
+                typingSpeed = 500; // Pause before typing new word
+            }
+            
+            setTimeout(typeEffect, typingSpeed);
+        }
+        
+        // Start typing effect
+        typeEffect();
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Active navigation link on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileToggle?.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+        
+        // Code Editor Typing Animation
+        const codeLines = [
+            { lineNo: '01', content: '<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>' },
+            { lineNo: '02', content: '<span class="keyword">#include</span> <span class="string">&lt;vector&gt;</span>' },
+            { lineNo: '03', content: '<span class="keyword">#include</span> <span class="string">&lt;algorithm&gt;</span>' },
+            { lineNo: '04', content: '' },
+            { lineNo: '05', content: '<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="namespace">std</span>;' },
+            { lineNo: '06', content: '' },
+            { lineNo: '07', content: '<span class="comment">// Binary Search Implementation</span>' },
+            { lineNo: '08', content: '<span class="keyword">int</span> <span class="function">binarySearch</span>(<span class="type">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; arr, <span class="keyword">int</span> target) {' },
+            { lineNo: '09', content: '    <span class="keyword">int</span> left = <span class="number">0</span>, right = arr.<span class="function">size</span>() - <span class="number">1</span>;' },
+            { lineNo: '10', content: '    ' },
+            { lineNo: '11', content: '    <span class="keyword">while</span> (left <= right) {' },
+            { lineNo: '12', content: '        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;' },
+            { lineNo: '13', content: '        ' },
+            { lineNo: '14', content: '        <span class="keyword">if</span> (arr[mid] == target) {' },
+            { lineNo: '15', content: '            <span class="keyword">return</span> mid; <span class="comment">// Found the target</span>' },
+            { lineNo: '16', content: '        }' },
+            { lineNo: '17', content: '        <span class="keyword">else if</span> (arr[mid] < target) {' },
+            { lineNo: '18', content: '            left = mid + <span class="number">1</span>; <span class="comment">// Search right half</span>' },
+            { lineNo: '19', content: '        }' },
+            { lineNo: '20', content: '        <span class="keyword">else</span> {' },
+            { lineNo: '21', content: '            right = mid - <span class="number">1</span>; <span class="comment">// Search left half</span>' },
+            { lineNo: '22', content: '        }' },
+            { lineNo: '23', content: '    }' },
+            { lineNo: '24', content: '    <span class="keyword">return</span> -<span class="number">1</span>; <span class="comment">// Not found</span>' },
+            { lineNo: '25', content: '}' }
+        ];
+        
+        let currentLineIndex = 0;
+        let currentCharIndex = 0;
+        let isTyping = true;
+        const codeEditor = document.getElementById('code-editor').querySelector('code');
+        let typedContent = [];
+        
+        function typeCode() {
+            if (currentLineIndex >= codeLines.length) {
+                // Reset and start over after a pause
+                setTimeout(() => {
+                    currentLineIndex = 0;
+                    currentCharIndex = 0;
+                    typedContent = [];
+                    codeEditor.innerHTML = '';
+                    typeCode();
+                }, 3000);
+                return;
+            }
+            
+            const currentLine = codeLines[currentLineIndex];
+            const fullLineHTML = `<span class="line"><span class="line-no">${currentLine.lineNo}</span> ${currentLine.content}</span>`;
+            
+            // Create a temporary element to extract text content for typing effect
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = fullLineHTML;
+            const textContent = tempDiv.textContent;
+            
+            if (currentCharIndex <= textContent.length) {
+                // Build the current line with typing effect
+                let displayHTML = typedContent.join('\n');
+                if (typedContent.length > 0 && currentCharIndex === 0) {
+                    displayHTML += '\n';
+                }
+                
+                // For the current line being typed
+                if (currentCharIndex > 0) {
+                    const lineStart = `<span class="line"><span class="line-no">${currentLine.lineNo}</span> `;
+                    const lineContent = currentLine.content;
+                    
+                    // Calculate how much of the actual content to show
+                    const visibleLength = currentCharIndex - currentLine.lineNo.length - 1;
+                    if (visibleLength > 0) {
+                        // Create a partial version of the styled content
+                        const partialContent = truncateHTMLContent(lineContent, visibleLength);
+                        displayHTML += lineStart + partialContent + '</span>';
+                    } else {
+                        displayHTML += lineStart + '</span>';
+                    }
+                }
+                
+                // Add cursor
+                displayHTML += '<span class="typing-cursor">|</span>';
+                codeEditor.innerHTML = displayHTML;
+                
+                currentCharIndex++;
+                setTimeout(typeCode, Math.random() * 50 + 30); // Variable typing speed
+            } else {
+                // Line completed
+                typedContent.push(fullLineHTML);
+                currentLineIndex++;
+                currentCharIndex = 0;
+                
+                // Update display without cursor briefly
+                codeEditor.innerHTML = typedContent.join('\n');
+                
+                // Add a small pause between lines
+                setTimeout(typeCode, 100);
+            }
+        }
+        
+        // Helper function to truncate HTML content while preserving tags
+        function truncateHTMLContent(htmlContent, maxLength) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            const textContent = tempDiv.textContent;
+            
+            if (textContent.length <= maxLength) {
+                return htmlContent;
+            }
+            
+            // Simple approach: return the HTML up to the character limit
+            let charCount = 0;
+            let result = '';
+            let inTag = false;
+            let currentTag = '';
+            
+            for (let i = 0; i < htmlContent.length; i++) {
+                const char = htmlContent[i];
+                
+                if (char === '<') {
+                    inTag = true;
+                    currentTag = char;
+                } else if (char === '>') {
+                    inTag = false;
+                    result += currentTag + char;
+                    currentTag = '';
+                } else if (inTag) {
+                    currentTag += char;
+                } else {
+                    if (charCount < maxLength) {
+                        result += char;
+                        charCount++;
+                    } else {
+                        break;
+                    }
+                }
+            }
+            
+            // Close any open tags
+            if (result.includes('<span')) {
+                const openSpans = (result.match(/<span/g) || []).length;
+                const closeSpans = (result.match(/<\/span>/g) || []).length;
+                for (let i = 0; i < openSpans - closeSpans; i++) {
+                    result += '</span>';
+                }
+            }
+            
+            return result;
+        }
+        
+        // Start typing animation after a short delay
+        setTimeout(() => {
+            typeCode();
+        }, 1500);
+    </script>
+</body>
+</html>
