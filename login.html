@@ -60,54 +60,5 @@
       </section>
     </main>
 
-    <!-- Google Identity Services -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script>
-      (function () {
-        const btn = document.getElementById('googleSignInBtn');
-        if (!btn) return;
-
-        const CLIENT_ID = btn.dataset.clientId;
-        const REDIRECT = btn.dataset.redirect || 'index.html';
-        const SCOPES = [
-          'https://www.googleapis.com/auth/youtube',
-          'https://www.googleapis.com/auth/youtube.readonly',
-          'https://www.googleapis.com/auth/youtube.force-ssl'
-        ].join(' ');
-
-        let tokenClient = null;
-
-        function initClient() {
-          if (!CLIENT_ID || CLIENT_ID.includes('YOUR_GOOGLE_CLIENT_ID')) {
-            alert('Please set your Google OAuth Client ID in login.html (data-client-id).');
-            return null;
-          }
-          if (!tokenClient && window.google && google.accounts && google.accounts.oauth2) {
-            tokenClient = google.accounts.oauth2.initTokenClient({
-              client_id: CLIENT_ID,
-              scope: SCOPES,
-              prompt: 'consent',
-              callback: (resp) => {
-                // Do NOT log the access token. Treat it as a secret.
-                if (resp && resp.access_token) {
-                  sessionStorage.setItem('ga_signed_in', '1');
-                  // Optionally, store token in memory only; avoid persisting if not needed.
-                  // Redirect after brief confirmation.
-                  setTimeout(() => { window.location.href = REDIRECT; }, 600);
-                }
-              }
-            });
-          }
-          return tokenClient;
-        }
-
-        btn.addEventListener('click', function (e) {
-          e.preventDefault();
-          const client = initClient();
-          if (!client) return;
-          client.requestAccessToken();
-        });
-      })();
-    </script>
   </body>
 </html>
