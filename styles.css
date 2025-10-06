@@ -51,6 +51,25 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Navbar merges/shrinks on scroll */
+.navbar.shrink {
+    background: rgba(15, 15, 30, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+}
+
+.navbar.shrink .nav-container {
+    padding: 0.5rem 2rem;
+}
+
+.navbar.shrink .logo {
+    font-size: 1.35rem;
+}
+
+.navbar.shrink .login-button {
+    padding: 0.5rem 1.25rem;
+}
+
 .nav-container {
     max-width: 1280px;
     margin: 0 auto;

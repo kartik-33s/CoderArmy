@@ -90,10 +90,10 @@
 
             <div class="cta-buttons">
               <button class="btn btn-primary">Start Paid Learning</button>
-              <button class="btn btn-secondary">
+              <a class="btn btn-secondary" href="https://youtube.com/@coderarmy9?si=o0QphkLGnNP2BpvP" target="_blank" rel="noopener">
                 <i class="fab fa-youtube"></i>
                 Watch Demo
-              </button>
+              </a>
             </div>
 
             <div class="stats">
@@ -179,6 +179,20 @@
       <div class="hero-bg-gradient"></div>
       <div class="hero-bg-pattern"></div>
     </section>
+
+    <!-- Small script to shrink/merge navbar on scroll -->
+    <script>
+      (function () {
+        const nav = document.querySelector('.navbar');
+        if (!nav) return;
+        const onScroll = () => {
+          const y = window.scrollY || document.documentElement.scrollTop || 0;
+          if (y > 10) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      })();
+    </script>
 
     <!-- Learning Journey Section -->
     <section class="learning-journey-section">
