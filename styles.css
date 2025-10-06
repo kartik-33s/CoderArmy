@@ -442,7 +442,14 @@ body {
     gap: 0.5rem;
     position: relative;
     overflow: hidden;
+    text-decoration: none; /* remove underline when used as <a> */
 }
+
+/* Ensure underline never appears on anchor buttons */
+a.btn,
+a.btn:hover,
+a.btn:visited,
+a.btn:active { text-decoration: none; }
 
 .btn-primary {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
