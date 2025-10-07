@@ -1212,7 +1212,7 @@ a.btn:active { text-decoration: none; }
     .course-card:hover .card-inner { transform: none; }
 }
 
-.course-image {
+ .course-image {
     width: 100%;
     height: 200px;
     display: flex;
@@ -1226,6 +1226,16 @@ a.btn:active { text-decoration: none; }
     overflow: hidden;
 }
 
+/* Unify look of course images with subtle brand overlay */
+.course-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15,15,30,0) 20%, rgba(15,15,30,0.35) 65%, rgba(124,58,237,0.25) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
 .course-image-bg {
     position: absolute;
     top: 0;
@@ -1233,9 +1243,11 @@ a.btn:active { text-decoration: none; }
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     opacity: 1;
     z-index: 1;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: saturate(1.05) contrast(1.05) brightness(0.95);
 }
 
 .course-card:hover .course-image-bg {
@@ -1277,13 +1289,20 @@ a.btn:active { text-decoration: none; }
 
 .course-content {
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .course-title {
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     color: var(--text-primary);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .course-author {
@@ -1296,7 +1315,11 @@ a.btn:active { text-decoration: none; }
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .course-tags {
@@ -1570,16 +1593,24 @@ a.btn:active { text-decoration: none; }
     gap: 24px;
 }
 
-.instructor-slide {
+ .instructor-slide {
     opacity: 1;
     transform: none;
-    transition: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     position: relative;
     top: auto;
     left: auto;
     width: 100%;
     pointer-events: all;
     animation: none;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+}
+
+.instructor-slide:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
 }
 
 .instructor-slide.active {
@@ -1650,30 +1681,41 @@ a.btn:active { text-decoration: none; }
 }
 
 .instructor-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 60px;
-    align-items: center;
-    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+    padding: 16px;
+    min-height: initial;
 }
 
 .instructor-image {
     position: relative;
-    text-align: center;
+    text-align: left;
+    width: 100%;
+    height: 240px;
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .instructor-photo {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid rgba(124, 58, 237, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    object-position: center;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: saturate(1.05) contrast(1.03);
 }
+/* Fine-tuned cropping so faces are visible */
+.instructor-photo.aditya-photo { object-position: 50% 18%; }
+.instructor-photo.rohit-photo { object-position: 50% 35%; }
 
 .instructor-photo:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .instructor-details {
@@ -1761,7 +1803,11 @@ a.btn:active { text-decoration: none; }
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--text-muted);
-    margin: 0 0 25px 0;
+    margin: 0 0 20px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .instructor-actions {
@@ -2581,9 +2627,12 @@ a.btn:active { text-decoration: none; }
     .hero-title {
         font-size: clamp(2rem, 4vw, 3rem);
     }
+    .instructor-image { width: 100%; height: 220px; }
 }
 
 @media (max-width: 768px) {
+    .instructor-content { flex-direction: column; gap: 14px; padding: 16px; }
+    .instructor-image { width: 100%; height: 180px; }
     .learning-journey-section h1 {
         font-size: 2rem;
     }
