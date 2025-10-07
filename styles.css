@@ -1560,42 +1560,40 @@ a.btn:active { text-decoration: none; }
     box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
 }
 
-.instructor-slider {
+ .instructor-slider {
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
 }
 
 .instructor-slide {
-    opacity: 0;
-    transform: translateX(100px);
-    transition: all 0.8s ease-in-out;
-    position: absolute;
-    top: 0;
-    left: 0;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    position: relative;
+    top: auto;
+    left: auto;
     width: 100%;
-    pointer-events: none;
+    pointer-events: all;
+    animation: none;
 }
 
 .instructor-slide.active {
-    opacity: 1;
-    transform: translateX(0);
-    position: relative;
-    pointer-events: all;
 }
 
 .instructor-slide:not(.active) {
-    animation: slideOut 0.8s ease-in-out;
 }
 
 .instructor-slide.active {
-    animation: slideIn 0.8s ease-in-out;
 }
 
-/* Auto-rotation animation */
+/* Grid layout replaces auto-rotation */
 .instructor-slide {
-    animation: instructorRotate 10s infinite;
+    animation: none;
 }
 
 .instructor-slide:nth-child(1) {
@@ -1809,10 +1807,7 @@ a.btn:active { text-decoration: none; }
 
 /* Slide Indicators */
 .instructor-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 40px;
+    display: none;
 }
 
 .indicator {
@@ -2708,48 +2703,62 @@ a.btn:active { text-decoration: none; }
         justify-content: center;
     }
     
+    /* Stack instructor cards vertically on mobile */
+    .instructor-slider {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        overflow: visible;
+    }
+    
+    /* Mobile navbar */
+    .nav-container { padding: 0.75rem 1rem; }
+    .logo { font-size: 1.25rem; }
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 64px;
         left: -100%;
         width: 100%;
+        height: calc(100vh - 64px);
         background: var(--bg-primary);
         flex-direction: column;
-        padding: 2rem;
+        padding: 1.25rem 1.5rem;
         transition: left 0.3s ease;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
         z-index: 1000;
+        gap: 0.5rem;
     }
+    .nav-link { font-size: 1.05rem; padding: 0.75rem 0; }
+    .navbar .mobile-menu-checkbox:checked ~ .nav-container .nav-menu { left: 0; }
+    .mobile-menu-toggle { display: flex; }
+    .login-button { display: none; }
     
-    /* Show mobile menu when checkbox is checked */
-    .navbar .mobile-menu-checkbox:checked ~ .nav-container .nav-menu {
-        left: 0;
-    }
+    .hero-container { padding: 1rem; }
+    .hero-title { font-size: clamp(1.75rem, 7vw, 2.25rem); }
+    .hero-subtitle { font-size: 1rem; }
     
-    .mobile-menu-toggle {
-        display: flex;
-    }
+    .stats { flex-direction: column; gap: 1.25rem; }
+    .cta-buttons { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
     
-    .hero-container {
-        padding: 1rem;
-    }
-    
-    .stats {
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .cta-buttons {
-        flex-direction: column;
-    }
-    
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .code-window {
-        font-size: 0.75rem;
+    /* IDE-like code window */
+    .code-window { font-size: 0.8rem; }
+}
+
+/* Extra-small screens: tighter hero and code window */
+@media (max-width: 640px) {
+    .hero { padding-top: 70px; }
+    .dynamic-text { min-width: 140px; padding-right: 28px; }
+    .code-body { max-height: 260px; min-height: 220px; }
+    .code-content { animation: scrollCodeMobile 25s ease-in-out infinite; }
+    @keyframes scrollCodeMobile {
+        0% { transform: translateY(0); }
+        15% { transform: translateY(0); }
+        45% { transform: translateY(-50%); }
+        75% { transform: translateY(calc(-100% + 240px)); }
+        85% { transform: translateY(calc(-100% + 240px)); }
+        95% { transform: translateY(0); }
+        100% { transform: translateY(0); }
     }
 }
 }
