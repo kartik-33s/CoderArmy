@@ -858,8 +858,12 @@ a.btn:active { text-decoration: none; }
         padding: 1rem 0.75rem;
         max-height: 300px;
         min-height: 200px;
-        overflow-x: auto;
-        overflow-y: hidden;
+        overflow: hidden;
+    }
+    
+    .code-body::before,
+    .code-body::after {
+        height: 30px;
     }
 }
 
@@ -890,32 +894,59 @@ a.btn:active { text-decoration: none; }
     font-size: 0.875rem;
     line-height: 1.3; /* Decreased line spacing */
     position: relative;
-    animation: scrollCode 25s ease-in-out infinite;
-    animation-delay: 14s; /* Wait for all lines to type out */
+    animation: scrollCode 30s ease-in-out infinite;
+    animation-delay: 22s; /* Wait for all lines to type out with slower speed */
     width: 100%;
     min-width: max-content;
     white-space: nowrap;
 }
 
-/* Mobile code content fixes */
+/* Mobile code content fixes with typing animation enabled */
 @media (max-width: 768px) {
     .code-content {
         font-size: 0.7rem;
         line-height: 1.2;
-        animation: none;
-        white-space: pre;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        min-width: auto;
+        animation: scrollCodeMobile 35s ease-in-out infinite;
+        animation-delay: 22s;
+        white-space: nowrap;
+        min-width: max-content;
     }
     
     .code-line {
-        white-space: pre-wrap;
-        word-break: break-all;
-        width: auto;
-        animation: none;
-        opacity: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        opacity: 0;
+        animation: typeCodeLineMobile 2s ease-out forwards, fadeIn 0.4s ease-out forwards;
+        animation-delay: var(--delay);
+        display: block;
     }
+    
+    /* Mobile-specific delays (slightly faster than desktop) */
+    .code-line[data-delay="0.5s"] { animation-delay: 0.6s; }
+    .code-line[data-delay="1s"] { animation-delay: 1.2s; }
+    .code-line[data-delay="1.5s"] { animation-delay: 1.8s; }
+    .code-line[data-delay="2s"] { animation-delay: 2.4s; }
+    .code-line[data-delay="2.5s"] { animation-delay: 3.0s; }
+    .code-line[data-delay="3s"] { animation-delay: 3.6s; }
+    .code-line[data-delay="3.5s"] { animation-delay: 4.2s; }
+    .code-line[data-delay="4s"] { animation-delay: 4.8s; }
+    .code-line[data-delay="4.5s"] { animation-delay: 5.4s; }
+    .code-line[data-delay="5s"] { animation-delay: 6.0s; }
+    .code-line[data-delay="5.5s"] { animation-delay: 6.6s; }
+    .code-line[data-delay="6s"] { animation-delay: 7.2s; }
+    .code-line[data-delay="6.5s"] { animation-delay: 7.8s; }
+    .code-line[data-delay="7s"] { animation-delay: 8.4s; }
+    .code-line[data-delay="7.5s"] { animation-delay: 9.0s; }
+    .code-line[data-delay="8s"] { animation-delay: 9.6s; }
+    .code-line[data-delay="8.5s"] { animation-delay: 10.2s; }
+    .code-line[data-delay="9s"] { animation-delay: 10.8s; }
+    .code-line[data-delay="9.5s"] { animation-delay: 11.4s; }
+    .code-line[data-delay="10s"] { animation-delay: 12.0s; }
+    .code-line[data-delay="10.5s"] { animation-delay: 12.6s; }
+    .code-line[data-delay="11s"] { animation-delay: 13.2s; }
+    .code-line[data-delay="11.5s"] { animation-delay: 13.8s; }
+    .code-line[data-delay="12s"] { animation-delay: 14.4s; }
 }
 
 /* Pause scrolling on hover */
@@ -973,35 +1004,35 @@ a.btn:active { text-decoration: none; }
     overflow: hidden;
     white-space: nowrap;
     width: 0;
-    animation: typeCodeLine 1.5s ease-out forwards, fadeIn 0.3s ease-out forwards;
+    animation: typeCodeLine 2.5s ease-out forwards, fadeIn 0.5s ease-out forwards;
     animation-delay: var(--delay);
 }
 
-/* Apply delays using inline styles or data attributes */
-.code-line[data-delay="0.5s"] { animation-delay: 0.5s; }
-.code-line[data-delay="1s"] { animation-delay: 1s; }
-.code-line[data-delay="1.5s"] { animation-delay: 1.5s; }
-.code-line[data-delay="2s"] { animation-delay: 2s; }
-.code-line[data-delay="2.5s"] { animation-delay: 2.5s; }
-.code-line[data-delay="3s"] { animation-delay: 3s; }
-.code-line[data-delay="3.5s"] { animation-delay: 3.5s; }
-.code-line[data-delay="4s"] { animation-delay: 4s; }
-.code-line[data-delay="4.5s"] { animation-delay: 4.5s; }
-.code-line[data-delay="5s"] { animation-delay: 5s; }
-.code-line[data-delay="5.5s"] { animation-delay: 5.5s; }
-.code-line[data-delay="6s"] { animation-delay: 6s; }
-.code-line[data-delay="6.5s"] { animation-delay: 6.5s; }
-.code-line[data-delay="7s"] { animation-delay: 7s; }
-.code-line[data-delay="7.5s"] { animation-delay: 7.5s; }
-.code-line[data-delay="8s"] { animation-delay: 8s; }
-.code-line[data-delay="8.5s"] { animation-delay: 8.5s; }
-.code-line[data-delay="9s"] { animation-delay: 9s; }
-.code-line[data-delay="9.5s"] { animation-delay: 9.5s; }
-.code-line[data-delay="10s"] { animation-delay: 10s; }
-.code-line[data-delay="10.5s"] { animation-delay: 10.5s; }
-.code-line[data-delay="11s"] { animation-delay: 11s; }
-.code-line[data-delay="11.5s"] { animation-delay: 11.5s; }
-.code-line[data-delay="12s"] { animation-delay: 12s; }
+/* Apply delays using inline styles or data attributes - Slower timing */
+.code-line[data-delay="0.5s"] { animation-delay: 0.8s; }
+.code-line[data-delay="1s"] { animation-delay: 1.6s; }
+.code-line[data-delay="1.5s"] { animation-delay: 2.4s; }
+.code-line[data-delay="2s"] { animation-delay: 3.2s; }
+.code-line[data-delay="2.5s"] { animation-delay: 4.0s; }
+.code-line[data-delay="3s"] { animation-delay: 4.8s; }
+.code-line[data-delay="3.5s"] { animation-delay: 5.6s; }
+.code-line[data-delay="4s"] { animation-delay: 6.4s; }
+.code-line[data-delay="4.5s"] { animation-delay: 7.2s; }
+.code-line[data-delay="5s"] { animation-delay: 8.0s; }
+.code-line[data-delay="5.5s"] { animation-delay: 8.8s; }
+.code-line[data-delay="6s"] { animation-delay: 9.6s; }
+.code-line[data-delay="6.5s"] { animation-delay: 10.4s; }
+.code-line[data-delay="7s"] { animation-delay: 11.2s; }
+.code-line[data-delay="7.5s"] { animation-delay: 12.0s; }
+.code-line[data-delay="8s"] { animation-delay: 12.8s; }
+.code-line[data-delay="8.5s"] { animation-delay: 13.6s; }
+.code-line[data-delay="9s"] { animation-delay: 14.4s; }
+.code-line[data-delay="9.5s"] { animation-delay: 15.2s; }
+.code-line[data-delay="10s"] { animation-delay: 16.0s; }
+.code-line[data-delay="10.5s"] { animation-delay: 16.8s; }
+.code-line[data-delay="11s"] { animation-delay: 17.6s; }
+.code-line[data-delay="11.5s"] { animation-delay: 18.4s; }
+.code-line[data-delay="12s"] { animation-delay: 19.2s; }
 
 @keyframes typeCodeLine {
     from {
@@ -1018,6 +1049,41 @@ a.btn:active { text-decoration: none; }
     }
     to {
         opacity: 1;
+    }
+}
+
+/* Mobile-specific typing animation */
+@keyframes typeCodeLineMobile {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Mobile-specific scroll animation */
+@keyframes scrollCodeMobile {
+    0% {
+        transform: translateY(0);
+    }
+    15% {
+        transform: translateY(0);
+    }
+    45% {
+        transform: translateY(-40%);
+    }
+    75% {
+        transform: translateY(calc(-100% + 220px));
+    }
+    85% {
+        transform: translateY(calc(-100% + 220px));
+    }
+    95% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
 
@@ -2980,16 +3046,17 @@ a.btn:active { text-decoration: none; }
     
     .code-content {
         font-size: 0.65rem;
-        animation: none;
-        white-space: pre-wrap;
+        animation: scrollCodeMobile 35s ease-in-out infinite;
+        animation-delay: 22s;
+        white-space: nowrap;
     }
     
     .code-line {
-        animation: none;
-        opacity: 1;
-        width: auto;
-        white-space: pre-wrap;
-        word-break: break-all;
+        animation: typeCodeLineMobile 1.8s ease-out forwards, fadeIn 0.3s ease-out forwards;
+        opacity: 0;
+        width: 0;
+        white-space: nowrap;
+        overflow: hidden;
     }
     
     .code-header {
@@ -3291,16 +3358,17 @@ a.btn:active { text-decoration: none; }
     
     .code-content { 
         font-size: 0.6rem;
-        animation: none;
-        white-space: pre-wrap;
+        animation: scrollCodeMobile 35s ease-in-out infinite;
+        animation-delay: 22s;
+        white-space: nowrap;
     }
     
     .code-line {
-        animation: none;
-        opacity: 1;
-        width: auto;
-        white-space: pre-wrap;
-        word-break: break-all;
+        animation: typeCodeLineMobile 1.6s ease-out forwards, fadeIn 0.3s ease-out forwards;
+        opacity: 0;
+        width: 0;
+        white-space: nowrap;
+        overflow: hidden;
     }
     
     .code-header {
