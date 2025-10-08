@@ -103,6 +103,35 @@ img {
         align-items: center;
         justify-content: center;
     }
+    
+    /* Prevent 3D transforms on mobile to avoid crashes */
+    * {
+        transform-style: flat !important;
+        backface-visibility: hidden;
+    }
+    
+    .code-window,
+    .code-window:hover,
+    .hero-right {
+        transform: none !important;
+        perspective: none !important;
+    }
+    
+    /* Ensure all content fits on screen */
+    .hero-content,
+    .hero-left,
+    .hero-right {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Fix button text wrapping */
+    .btn {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 /* Navigation Styles */
@@ -498,6 +527,22 @@ img {
     gap: 1rem;
     margin-bottom: 3rem;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile CTA buttons fixes */
+@media (max-width: 768px) {
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .btn {
@@ -510,10 +555,27 @@ img {
     border: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     position: relative;
     overflow: hidden;
     text-decoration: none; /* remove underline when used as <a> */
+    box-sizing: border-box;
+    min-height: 44px;
+    white-space: nowrap;
+}
+
+/* Mobile button fixes */
+@media (max-width: 768px) {
+    .btn {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        justify-content: center;
+        text-align: center;
+        min-height: 48px;
+        box-sizing: border-box;
+    }
 }
 
 /* Ensure underline never appears on anchor buttons */
@@ -651,10 +713,29 @@ a.btn:active { text-decoration: none; }
     border: 1px solid rgba(139, 92, 246, 0.2);
     transform: perspective(1000px) rotateY(-5deg);
     transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .code-window:hover {
     transform: perspective(1000px) rotateY(0deg);
+}
+
+/* Mobile code window fixes */
+@media (max-width: 768px) {
+    .code-window {
+        transform: none !important;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .code-window:hover {
+        transform: none !important;
+    }
 }
 
 .code-header {
@@ -664,6 +745,34 @@ a.btn:active { text-decoration: none; }
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile code header fixes */
+@media (max-width: 768px) {
+    .code-header {
+        padding: 0.75rem 1rem;
+        flex-wrap: nowrap;
+        min-height: auto;
+    }
+    
+    .file-name {
+        font-size: 0.75rem;
+        position: static;
+        transform: none;
+        flex: 1;
+        text-align: center;
+    }
+    
+    .live-indicator {
+        font-size: 0.75rem;
+    }
+    
+    .control {
+        width: 10px;
+        height: 10px;
+    }
 }
 
 .window-controls {
@@ -739,6 +848,19 @@ a.btn:active { text-decoration: none; }
     overflow: hidden; /* Hide scrollbar for auto-scroll */
     min-height: 400px;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile code body fixes */
+@media (max-width: 768px) {
+    .code-body {
+        padding: 1rem 0.75rem;
+        max-height: 300px;
+        min-height: 200px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
 }
 
 /* Gradient overlays for smooth fade effect */
@@ -770,6 +892,30 @@ a.btn:active { text-decoration: none; }
     position: relative;
     animation: scrollCode 25s ease-in-out infinite;
     animation-delay: 14s; /* Wait for all lines to type out */
+    width: 100%;
+    min-width: max-content;
+    white-space: nowrap;
+}
+
+/* Mobile code content fixes */
+@media (max-width: 768px) {
+    .code-content {
+        font-size: 0.7rem;
+        line-height: 1.2;
+        animation: none;
+        white-space: pre;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        min-width: auto;
+    }
+    
+    .code-line {
+        white-space: pre-wrap;
+        word-break: break-all;
+        width: auto;
+        animation: none;
+        opacity: 1;
+    }
 }
 
 /* Pause scrolling on hover */
@@ -2816,11 +2962,44 @@ a.btn:active { text-decoration: none; }
         margin-top: 1rem;
         max-width: 100%;
         overflow: hidden;
+        transform: none !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+    
+    .code-window:hover {
+        transform: none !important;
     }
     
     .code-body {
         max-height: 220px;
         min-height: 180px;
+        padding: 0.75rem;
+        overflow-x: auto;
+    }
+    
+    .code-content {
+        font-size: 0.65rem;
+        animation: none;
+        white-space: pre-wrap;
+    }
+    
+    .code-line {
+        animation: none;
+        opacity: 1;
+        width: auto;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    
+    .code-header {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .file-name {
+        font-size: 0.7rem;
+        position: static;
+        transform: none;
     }
     
     /* Learning journey section */
@@ -3095,15 +3274,37 @@ a.btn:active { text-decoration: none; }
     .code-window {
         font-size: 0.7rem;
         margin-top: 0.8rem;
+        transform: none !important;
+        border-radius: 6px;
+    }
+    
+    .code-window:hover {
+        transform: none !important;
     }
     
     .code-body { 
         max-height: 200px; 
-        min-height: 160px; 
+        min-height: 160px;
+        padding: 0.5rem;
+        overflow-x: auto;
     }
     
     .code-content { 
-        animation: scrollCodeMobile 25s ease-in-out infinite; 
+        font-size: 0.6rem;
+        animation: none;
+        white-space: pre-wrap;
+    }
+    
+    .code-line {
+        animation: none;
+        opacity: 1;
+        width: auto;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+    
+    .code-header {
+        padding: 0.4rem 0.5rem;
     }
     
     @keyframes scrollCodeMobile {
