@@ -134,7 +134,7 @@ img {
     }
 }
 
-/* Navigation Styles */
+/* Navigation Styles with CSS-only shrink effect */
 .navbar {
     position: fixed;
     top: 0;
@@ -146,26 +146,213 @@ img {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: navbarShrink 1s ease-in-out 3s forwards;
 }
 
-/* Navbar merges/shrinks on scroll */
-.navbar.shrink {
-    background: rgba(15, 15, 30, 0.85);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+/* CSS-only shrink animation triggered after page load */
+@keyframes navbarShrink {
+    0% {
+        background: rgba(15, 15, 30, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        background: rgba(15, 15, 30, 0.98);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
 }
 
-.navbar.shrink .nav-container {
-    padding: 0.5rem 2rem;
+/* Navbar shrunk state - will be triggered by scroll effect */
+.navbar-scrolled {
+    background: rgba(15, 15, 30, 0.98) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-.navbar.shrink .logo {
-    font-size: 1.35rem;
+.navbar-scrolled .nav-container {
+    padding: 0.6rem 2rem !important;
+    transition: padding 0.3s ease;
 }
 
-.navbar.shrink .login-button {
-    padding: 0.5rem 1.25rem;
+.navbar-scrolled .logo {
+    font-size: 1.4rem !important;
+    transition: font-size 0.3s ease;
+}
+
+.navbar-scrolled .login-button {
+    padding: 0.6rem 1.3rem !important;
+    transition: padding 0.3s ease;
+}
+
+/* CSS-only scroll-driven navbar shrink for modern browsers */
+@supports (animation-timeline: scroll()) {
+    .navbar {
+        animation: navbarScrollEffect linear;
+        animation-timeline: scroll(root);
+        animation-range: 0px 400px;
+    }
+    
+    @keyframes navbarScrollEffect {
+        0% {
+            background: rgba(15, 15, 30, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        100% {
+            background: rgba(15, 15, 30, 0.98);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+        }
+    }
+    
+    .nav-container {
+        animation: navContainerShrink linear;
+        animation-timeline: scroll(root);
+        animation-range: 0px 400px;
+    }
+    
+    @keyframes navContainerShrink {
+        0% {
+            padding: 1rem 2rem;
+        }
+        100% {
+            padding: 0.6rem 2rem;
+        }
+    }
+    
+    .logo {
+        animation: logoShrink linear;
+        animation-timeline: scroll(root);
+        animation-range: 0px 400px;
+    }
+    
+    @keyframes logoShrink {
+        0% {
+            font-size: 1.5rem;
+        }
+        100% {
+            font-size: 1.4rem;
+        }
+    }
+    
+    .login-button {
+        animation: loginButtonShrink linear;
+        animation-timeline: scroll(root);
+        animation-range: 0px 400px;
+    }
+    
+    @keyframes loginButtonShrink {
+        0% {
+            padding: 0.6rem 1.5rem;
+        }
+        100% {
+            padding: 0.6rem 1.3rem;
+        }
+    }
+}
+
+/* Fallback for browsers that don't support scroll-timeline */
+@supports not (animation-timeline: scroll()) {
+    /* Create a scroll indicator element */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 100vh;
+        left: 0;
+        width: 1px;
+        height: 1px;
+        z-index: -1;
+    }
+    
+    /* Use CSS transforms and viewport units as fallback */
+    .navbar {
+        transform: translateY(calc(var(--scroll-offset, 0) * -1px));
+        background: rgba(15, 15, 30, calc(0.95 + var(--scroll-offset, 0) * 0.03));
+        box-shadow: 0 calc(4px - var(--scroll-offset, 0) * 2px) calc(20px - var(--scroll-offset, 0) * 8px) rgba(0, 0, 0, calc(0.5 - var(--scroll-offset, 0) * 0.2));
+        transition: all 0.3s ease;
+    }
+    
+    /* Enhanced fallback using CSS custom properties */
+    .navbar {
+        --scroll-progress: 0;
+        background: rgba(15, 15, 30, calc(0.95 + var(--scroll-progress) * 0.03));
+        border-bottom: 1px solid rgba(255, 255, 255, calc(0.05 + var(--scroll-progress) * 0.03));
+        box-shadow: 0 calc(4px - var(--scroll-progress) * 2px) calc(20px - var(--scroll-progress) * 8px) rgba(0, 0, 0, calc(0.5 - var(--scroll-progress) * 0.2));
+    }
+    
+    /* Time-based automatic shrink simulation (starts after 4 seconds) */
+    .navbar {
+        animation: timeBasedShrink 2s ease-in-out 4s forwards;
+    }
+    
+    @keyframes timeBasedShrink {
+        0% {
+            --scroll-progress: 0;
+        }
+        100% {
+            --scroll-progress: 1;
+        }
+    }
+    
+    .nav-container {
+        animation: timeBasedContainerShrink 2s ease-in-out 4s forwards;
+    }
+    
+    @keyframes timeBasedContainerShrink {
+        0% {
+            padding: 1rem 2rem;
+        }
+        100% {
+            padding: 0.6rem 2rem;
+        }
+    }
+    
+    .logo {
+        animation: timeBasedLogoShrink 2s ease-in-out 4s forwards;
+    }
+    
+    @keyframes timeBasedLogoShrink {
+        0% {
+            font-size: 1.5rem;
+        }
+        100% {
+            font-size: 1.4rem;
+        }
+    }
+    
+    .login-button {
+        animation: timeBasedButtonShrink 2s ease-in-out 4s forwards;
+    }
+    
+    @keyframes timeBasedButtonShrink {
+        0% {
+            padding: 0.6rem 1.5rem;
+        }
+        100% {
+            padding: 0.6rem 1.3rem;
+        }
+    }
+    
+    /* Manual hover trigger for demonstration */
+    .navbar:hover {
+        background: rgba(15, 15, 30, 0.98) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    .navbar:hover .nav-container {
+        padding: 0.6rem 2rem !important;
+    }
+    
+    .navbar:hover .logo {
+        font-size: 1.4rem !important;
+    }
+    
+    .navbar:hover .login-button {
+        padding: 0.6rem 1.3rem !important;
+    }
 }
 
 .nav-container {
@@ -175,6 +362,89 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile navbar adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0;
+    }
+    
+    .nav-container {
+        padding: 0.75rem 1rem;
+    }
+    
+    /* Mobile scroll effect simulation */
+    @supports (animation-timeline: scroll()) {
+        .nav-container {
+            animation: navContainerShrinkMobile linear;
+            animation-timeline: scroll(root);
+            animation-range: 0px 200px;
+        }
+        
+        @keyframes navContainerShrinkMobile {
+            0% {
+                padding: 0.75rem 1rem;
+            }
+            100% {
+                padding: 0.5rem 1rem;
+            }
+        }
+        
+        .logo {
+            animation: logoShrinkMobile linear;
+            animation-timeline: scroll(root);
+            animation-range: 0px 200px;
+        }
+        
+        @keyframes logoShrinkMobile {
+            0% {
+                font-size: 1.25rem;
+            }
+            100% {
+                font-size: 1.1rem;
+            }
+        }
+    }
+    
+    /* Fallback time-based shrink for mobile */
+    @supports not (animation-timeline: scroll()) {
+        .nav-container {
+            animation: timeBasedContainerShrinkMobile 2s ease-in-out 3s forwards;
+        }
+        
+        @keyframes timeBasedContainerShrinkMobile {
+            0% {
+                padding: 0.75rem 1rem;
+            }
+            100% {
+                padding: 0.5rem 1rem;
+            }
+        }
+        
+        .logo {
+            animation: timeBasedLogoShrinkMobile 2s ease-in-out 3s forwards;
+        }
+        
+        @keyframes timeBasedLogoShrinkMobile {
+            0% {
+                font-size: 1.25rem;
+            }
+            100% {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Touch/tap trigger for mobile */
+        .navbar:active .nav-container {
+            padding: 0.5rem 1rem !important;
+        }
+        
+        .navbar:active .logo {
+            font-size: 1.1rem !important;
+        }
+    }
 }
 
 .logo {
@@ -184,7 +454,7 @@ img {
     font-weight: 700;
     color: var(--text-primary);
     text-decoration: none;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, font-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo:hover {
@@ -285,9 +555,10 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
 }
 
 .login-button::before {
@@ -3542,7 +3813,7 @@ a.btn:active { text-decoration: none; }
     }
     
     .course-content {
-        padding: 1rem;
+        padding: 2rem;
         width: 100%;
         box-sizing: border-box;
     }
