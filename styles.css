@@ -1815,6 +1815,7 @@ a.btn:active { text-decoration: none; }
     overflow: hidden;
     background: var(--bg-secondary);
     border-radius: 12px 12px 0 0;
+    flex-shrink: 0;
 }
 
 /* Unify look of course images with subtle brand overlay */
@@ -1840,6 +1841,8 @@ a.btn:active { text-decoration: none; }
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: saturate(1.05) contrast(1.05) brightness(0.95);
     display: block;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 /* Ensure all instructor photos in course cards are treated as course images */
@@ -1856,6 +1859,8 @@ a.btn:active { text-decoration: none; }
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: saturate(1.05) contrast(1.05) brightness(0.95);
     display: block;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .course-card:hover .course-image-bg,
