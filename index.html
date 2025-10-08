@@ -127,19 +127,20 @@
 
           <div class="hero-right">
             <div class="code-window">
-              <div class="code-header">
-                <div class="window-controls">
-                  <span class="control red"></span>
-                  <span class="control yellow"></span>
-                  <span class="control green"></span>
+              <div class="code-window-inner">
+                <div class="code-header">
+                  <div class="window-controls">
+                    <span class="control red"></span>
+                    <span class="control yellow"></span>
+                    <span class="control green"></span>
+                  </div>
+                  <span class="file-name">CoderArmy.cpp</span>
+                  <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    <span>Live Coding</span>
+                  </div>
                 </div>
-                <span class="file-name">CoderArmy.cpp</span>
-                <div class="live-indicator">
-                  <span class="live-dot"></span>
-                  <span>Live Coding</span>
-                </div>
-              </div>
-              <div class="code-body">
+                <div class="code-body">
                 <pre class="code-content"><code class="animated-code">
 <span class="code-line" data-delay="0.5s"><span class="line-no">01</span> <span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span></span>
 <span class="code-line" data-delay="1s"><span class="line-no">02</span> <span class="keyword">#include</span> <span class="string">&lt;vector&gt;</span></span>
@@ -166,6 +167,7 @@
 <span class="code-line" data-delay="11.5s"><span class="line-no">23</span>     <span class="keyword">return</span> -<span class="number">1</span>; <span class="comment">// Not found</span></span>
 <span class="code-line" data-delay="12s"><span class="line-no">24</span> }</span>
                             </code></pre>
+                </div>
               </div>
             </div>
 
@@ -651,6 +653,93 @@
         </div>
     </footer>
 
-    
+    <!-- Floating Chatbot Button (CSS-only) -->
+    <input type="checkbox" id="chatbot-toggle" class="chatbot-checkbox" />
+    <div class="chatbot-container">
+        <label for="chatbot-toggle" class="chatbot-button">
+            <i class="fas fa-comments chatbot-icon"></i>
+            <i class="fas fa-times chatbot-close"></i>
+        </label>
+        <div class="chatbot-tooltip">Need help? Chat with us!</div>
+    </div>
+
+    <!-- Chatbot Widget (CSS-only toggle) -->
+    <div class="chatbot-widget">
+        <div class="chatbot-header">
+            <div class="chatbot-header-content">
+                <div class="chatbot-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chatbot-info">
+                    <h4>CoderArmy Assistant</h4>
+                    <span class="chatbot-status">Online</span>
+                </div>
+            </div>
+            <label for="chatbot-toggle" class="chatbot-minimize">
+                <i class="fas fa-minus"></i>
+            </label>
+        </div>
+        <div class="chatbot-messages">
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>Hi there! 👋 I'm here to help you with any questions about our courses. How can I assist you today?</p>
+                    <span class="message-time">Just now</span>
+                </div>
+            </div>
+            
+            <!-- Sample conversation for demo -->
+            <div class="message user-message demo-message">
+                <div class="message-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="message-content">
+                    <p>Tell me about your Web Development course</p>
+                    <span class="message-time">2:34 PM</span>
+                </div>
+            </div>
+            
+            <div class="message bot-message demo-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>Our Web Development course covers MERN stack, blockchain, and system design! Perfect for building modern web applications. It includes 22 lectures with hands-on projects! 💻</p>
+                    <span class="message-time">2:35 PM</span>
+                </div>
+            </div>
+            
+            <div class="message user-message demo-message">
+                <div class="message-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="message-content">
+                    <p>What about the GenAI course?</p>
+                    <span class="message-time">2:36 PM</span>
+                </div>
+            </div>
+            
+            <div class="message bot-message demo-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>Great question! Our GenAI course teaches you about generative AI, prompt engineering, and building AI applications. It's 9 lectures of cutting-edge content! 🤖✨</p>
+                    <span class="message-time">2:37 PM</span>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" placeholder="Type your message..." readonly>
+            <div class="chatbot-send">
+                <i class="fas fa-paper-plane"></i>
+            </div>
+            <div class="demo-notice">
+                <small>This is a demo chat interface</small>
+            </div>
+        </div>
+    </div>
   </body>
 </html>
