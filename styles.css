@@ -981,12 +981,48 @@ a.btn:active { text-decoration: none; }
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(139, 92, 246, 0.2);
+    position: relative;
     transform: perspective(1000px) rotateY(-5deg);
     transition: transform 0.3s ease;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+}
+
+/* Animated gradient border effect */
+.code-window::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 14px;
+    background: linear-gradient(
+        45deg,
+        #ff0080,
+        #7928ca,
+        #8b5cf6,
+        #06ffa5,
+        #00d4ff,
+        #7928ca,
+        #ff0080
+    );
+    background-size: 300% 300%;
+    animation: gradientBorder 3s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .code-window:hover {
@@ -1002,6 +1038,11 @@ a.btn:active { text-decoration: none; }
         margin: 0;
         width: 100%;
         max-width: 100%;
+    }
+    
+    .code-window::before {
+        border-radius: 10px;
+        animation-duration: 4s; /* Slightly slower on mobile for better visibility */
     }
     
     .code-window:hover {
@@ -2379,7 +2420,7 @@ a.btn:active { text-decoration: none; }
     position: relative;
     text-align: center;
     width: 100%;
-    height: clamp(200px, 25vw, 320px);
+    height: 320px;
     max-width: 400px;
     margin: 0 auto;
     border-radius: 16px;
@@ -2387,6 +2428,7 @@ a.btn:active { text-decoration: none; }
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .instructor-photo {
@@ -2400,6 +2442,8 @@ a.btn:active { text-decoration: none; }
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: saturate(1.05) contrast(1.03);
     display: block;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 /* Fine-tuned cropping so faces are visible */
@@ -3372,7 +3416,7 @@ a.btn:active { text-decoration: none; }
     /* Tablet instructor image adjustments */
     .instructor-image { 
         width: 100%; 
-        height: clamp(200px, 22vw, 280px);
+        height: 280px;
         max-width: 350px;
     }
     
