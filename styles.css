@@ -1745,6 +1745,31 @@ a.btn:active { text-decoration: none; }
 
 /* Extra small mobile devices */
 @media (max-width: 640px) {
+    /* Navigation adjustments for small screens */
+    .nav-container {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .logo {
+        font-size: 1.1rem;
+    }
+    
+    .nav-menu {
+        padding: 1.5rem 1rem 2rem 1rem;
+        top: 58px;
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.8rem 0;
+    }
+    
+    .mobile-login-link {
+        padding: 0.7rem 1.2rem !important;
+        font-size: 0.9rem;
+    }
+    
+    /* Course cards */
     .course-card {
         height: 480px; /* Slightly smaller for small screens */
     }
@@ -1960,8 +1985,18 @@ a.btn:active { text-decoration: none; }
     transform: translateX(2px);
 }
 
-/* Desktop alternative - show button on card hover */
+/* Desktop media queries */
 @media (min-width: 769px) {
+    /* Show desktop login button, hide mobile login link */
+    .desktop-login {
+        display: flex;
+    }
+    
+    .mobile-login-link {
+        display: none;
+    }
+    
+    /* Desktop course card hover effects */
     .course-card:hover .mobile-start-btn {
         display: flex;
         animation: slideInUp 0.3s ease forwards;
@@ -3340,13 +3375,14 @@ a.btn:active { text-decoration: none; }
         background: rgba(15, 15, 30, 0.98);
         backdrop-filter: blur(10px);
         flex-direction: column;
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.5rem 3rem 1.5rem;
         transition: left 0.3s ease;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         z-index: 1000;
-        gap: 1rem;
+        gap: 0.5rem;
         justify-content: flex-start;
         align-items: stretch;
+        overflow-y: auto;
     }
     
     .nav-link { 
@@ -3354,6 +3390,15 @@ a.btn:active { text-decoration: none; }
         padding: 1rem 0; 
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         text-align: center;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        margin: 0.25rem 0;
+    }
+    
+    .nav-link:hover {
+        background: rgba(124, 58, 237, 0.1);
+        color: var(--primary-light) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
     
     .navbar .mobile-menu-checkbox:checked ~ .nav-container .nav-menu { 
@@ -3365,8 +3410,33 @@ a.btn:active { text-decoration: none; }
         z-index: 1001;
     }
     
-    .login-button { 
+    .desktop-login { 
         display: none; 
+    }
+    
+    /* Mobile login link styling */
+    .mobile-login-link {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+        color: var(--text-primary) !important;
+        border-radius: 25px;
+        padding: 0.8rem 1.5rem !important;
+        margin: 1rem 0 0.5rem 0;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: none;
+        border-bottom: none !important;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+    }
+    
+    .mobile-login-link:hover {
+        background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+        color: var(--text-primary) !important;
     }
     
     /* Hero section improvements */
