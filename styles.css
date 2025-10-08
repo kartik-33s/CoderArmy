@@ -60,6 +60,36 @@ img {
     }
 }
 
+/* Very small devices (320px and below) */
+@media (max-width: 320px) {
+    .instructor-image {
+        height: clamp(120px, 15vw, 150px);
+        max-width: 200px;
+        border-radius: 8px;
+    }
+    
+    .instructor-photo {
+        border-radius: 8px;
+    }
+    
+    .instructor-content {
+        padding: 1rem 0.25rem;
+    }
+    
+    .instructor-name h3 {
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
+    }
+    
+    .instructor-tags {
+        gap: 0.25rem;
+    }
+    
+    .tag {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+    }
+}
+
 /* Better touch targets for mobile */
 @media (max-width: 768px) {
     button, .btn, a {
@@ -348,7 +378,7 @@ img {
     display: inline-block;
     min-width: 200px; /* Increased width for longer words */
     height: 1.2em;
-    padding-right: 40px; /* More padding for cursor space */
+    padding-right: 10px; /* Reduced padding since cursor is removed */
 }
 
 /* CSS-only rotating text animation */
@@ -408,24 +438,7 @@ img {
     }
 }
 
-/* Blinking cursor using CSS */
-.dynamic-text::after {
-    content: '|';
-    position: absolute;
-    right: 15px; /* Move cursor 2-3 spaces after text */
-    color: var(--primary-light);
-    animation: cursorBlink 1s infinite;
-    font-weight: 300;
-}
-
-@keyframes cursorBlink {
-    0%, 49% {
-        opacity: 1;
-    }
-    50%, 100% {
-        opacity: 0;
-    }
-}
+/* Blinking cursor removed */
 
 .hero-subtitle {
     font-size: 1.125rem;
@@ -862,39 +875,9 @@ a.btn:active { text-decoration: none; }
     }
 }
 
-/* Animated cursor for code editor */
-.animated-code::after {
-    content: '_';
-    display: inline-block;
-    color: var(--primary-light);
-    animation: codeCursorBlink 1s infinite;
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-}
+/* Code editor cursor removed */
 
-@keyframes codeCursorBlink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-}
-
-/* Typing cursor animation */
-.typing-cursor {
-    display: inline-block;
-    color: var(--primary-light);
-    animation: cursorBlink 1s infinite;
-    font-weight: normal;
-    margin-left: 2px;
-}
-
-@keyframes cursorBlink {
-    0%, 49% {
-        opacity: 1;
-    }
-    50%, 100% {
-        opacity: 0;
-    }
-}
+/* Typing cursor animation removed */
 
 .line-no {
     color: #4a5568;
@@ -1710,12 +1693,16 @@ a.btn:active { text-decoration: none; }
 
 .instructor-image {
     position: relative;
-    text-align: left;
+    text-align: center;
     width: 100%;
-    height: 240px;
-    margin: 0;
-    border-radius: 12px;
+    height: clamp(200px, 25vw, 320px);
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 16px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .instructor-photo {
@@ -1723,18 +1710,69 @@ a.btn:active { text-decoration: none; }
     height: 100%;
     object-fit: cover;
     object-position: center;
-    border-radius: 12px;
+    border-radius: 16px;
     border: none;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
     transition: transform 0.3s ease, filter 0.3s ease;
     filter: saturate(1.05) contrast(1.03);
+    display: block;
 }
+
 /* Fine-tuned cropping so faces are visible */
 .instructor-photo.aditya-photo { object-position: 50% 18%; }
 .instructor-photo.rohit-photo { object-position: 50% 35%; }
 
 .instructor-photo:hover {
     transform: scale(1.03);
+}
+
+/* Responsive image loading and quality optimization */
+.instructor-photo {
+    /* Optimize for different screen densities */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Aspect ratio maintenance for all screen sizes */
+.instructor-image {
+    aspect-ratio: 4/3;
+    position: relative;
+}
+
+.instructor-image::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 75%; /* 4:3 Aspect Ratio */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Fallback for browsers that don't support aspect-ratio */
+@supports not (aspect-ratio: 4/3) {
+    .instructor-image {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .instructor-image::before {
+        display: block;
+        content: '';
+        width: 100%;
+        padding-top: 75%;
+    }
+    
+    .instructor-photo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .instructor-details {
@@ -2646,7 +2684,18 @@ a.btn:active { text-decoration: none; }
     .hero-title {
         font-size: clamp(2rem, 4vw, 3rem);
     }
-    .instructor-image { width: 100%; height: 220px; }
+    
+    /* Tablet instructor image adjustments */
+    .instructor-image { 
+        width: 100%; 
+        height: clamp(200px, 22vw, 280px);
+        max-width: 350px;
+    }
+    
+    .instructor-content {
+        text-align: center;
+        padding: 2rem 1rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -2729,7 +2778,7 @@ a.btn:active { text-decoration: none; }
     
     .dynamic-text {
         min-width: 120px;
-        padding-right: 20px;
+        padding-right: 5px;
     }
     
     /* Button improvements */
@@ -2832,14 +2881,15 @@ a.btn:active { text-decoration: none; }
     
     .instructor-image { 
         width: 100%; 
-        height: 200px;
+        height: clamp(180px, 20vw, 240px);
+        max-width: 300px;
         margin: 0 auto;
     }
     
     .instructor-photo {
-        width: 180px;
-        height: 180px;
-        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
     }
     
     .instructor-name h3 {
@@ -3009,7 +3059,7 @@ a.btn:active { text-decoration: none; }
     
     .dynamic-text { 
         min-width: 100px; 
-        padding-right: 15px; 
+        padding-right: 5px; 
     }
     
     /* Button and CTA improvements */
@@ -3106,9 +3156,15 @@ a.btn:active { text-decoration: none; }
         padding: 1.5rem 0.5rem;
     }
     
+    .instructor-image {
+        height: clamp(140px, 18vw, 180px);
+        max-width: 250px;
+    }
+    
     .instructor-photo {
-        width: 150px;
-        height: 150px;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
     }
     
     .instructor-name h3 {
