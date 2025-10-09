@@ -1663,8 +1663,10 @@ a.btn:active { text-decoration: none; }
     transition: transform 0.8s ease;
 }
 
-.course-card:hover .card-inner {
-    transform: rotateY(180deg);
+@media (hover: hover) and (min-width: 769px) {
+    .course-card:hover .card-inner {
+        transform: rotateY(180deg);
+    }
 }
 
 .card-face {
@@ -1771,7 +1773,10 @@ a.btn:active { text-decoration: none; }
     
     /* Disable flip on touch devices and stack faces */
     .course-card .card-inner { 
-        transform: none; 
+        transform: none !important; 
+    }
+    .course-card:hover .card-inner {
+        transform: none !important;
     }
     .course-card .card-face { 
         position: static; 
