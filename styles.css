@@ -1148,9 +1148,9 @@ a.btn:active { text-decoration: none; }
 .code-body {
     padding: 1.5rem;
     background: #0d1117;
-    max-height: 450px;
+    max-height: 520px;
     overflow: hidden; /* Hide scrollbar for auto-scroll */
-    min-height: 400px;
+    min-height: 480px;
     position: relative;
     width: 100%;
     box-sizing: border-box;
@@ -1160,8 +1160,8 @@ a.btn:active { text-decoration: none; }
 @media (max-width: 768px) {
     .code-body {
         padding: 1rem 0.75rem;
-        max-height: 300px;
-        min-height: 200px;
+        max-height: 350px;
+        min-height: 280px;
         overflow: hidden;
     }
     
@@ -2404,7 +2404,7 @@ a.btn:active { text-decoration: none; }
     flex-direction: column;
     gap: 16px;
     align-items: stretch;
-    padding: 16px;
+    padding: 20px;
     min-height: initial;
 }
 
@@ -2412,8 +2412,8 @@ a.btn:active { text-decoration: none; }
     position: relative;
     text-align: center;
     width: 100%;
-    height: 320px;
-    max-width: 400px;
+    height: 280px;
+    max-width: 350px;
     margin: 0 auto;
     border-radius: 16px;
     overflow: hidden;
@@ -2507,7 +2507,7 @@ a.btn:active { text-decoration: none; }
 }
 
 .instructor-name h3 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 700;
     margin: 0;
 }
@@ -3391,6 +3391,57 @@ a.btn:active { text-decoration: none; }
 }
 
 /* Responsive Design */
+
+/* Laptop/Large Tablet responsive (1200px and below) */
+@media (max-width: 1200px) {
+    /* Courses section adjustments */
+    .courses-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 0 15px;
+    }
+    
+    .course-card {
+        height: 420px;
+    }
+    
+    /* Instructor section adjustments */
+    .instructor-slider {
+        gap: 20px;
+        max-width: 1000px;
+    }
+    
+    .instructor-image {
+        height: 260px;
+        max-width: 320px;
+    }
+    
+    .instructor-content {
+        padding: 18px;
+    }
+    
+    /* Contact section adjustments */
+    .contact-content {
+        gap: 60px;
+    }
+    
+    .contact-container {
+        max-width: 1000px;
+        padding: 0 20px;
+    }
+    
+    /* Career section adjustments */
+    .career-content {
+        gap: 60px;
+    }
+    
+    .logo-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 25px;
+        max-width: 450px;
+    }
+}
+
 @media (max-width: 1024px) {
     .hero-content {
         grid-template-columns: 1fr;
@@ -3405,47 +3456,69 @@ a.btn:active { text-decoration: none; }
         font-size: clamp(2rem, 4vw, 3rem);
     }
     
-    /* Tablet instructor image adjustments */
+    /* Better courses grid for medium laptops */
+    .courses-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+    }
+    
+    .course-card {
+        height: 400px;
+    }
+    
+    /* Instructor section improvements */
+    .instructor-slider {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+    }
+    
     .instructor-image { 
         width: 100%; 
-        height: 280px;
-        max-width: 350px;
+        height: 240px;
+        max-width: 300px;
     }
     
     .instructor-content {
         text-align: center;
-        padding: 2rem 1rem;
+        padding: 1.5rem;
+        gap: 14px;
     }
     
-    /* Career section mobile adjustments */
+    .instructor-name h3 {
+        font-size: 1.6rem;
+    }
+    
+    /* Contact section improvements */
+    .contact-content {
+        gap: 50px;
+    }
+    
+    .contact-container {
+        max-width: 900px;
+    }
+    
+    .form-row {
+        gap: 18px;
+    }
+    
+    /* Career section adjustments */
     .career-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
+        gap: 50px;
     }
     
     .logo-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
         justify-items: center;
+        max-width: 400px;
     }
     
-    /* Contact section mobile */
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    /* Footer mobile */
+    /* Footer adjustments */
     .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
     }
 }
 
@@ -3542,6 +3615,98 @@ a.btn:active { text-decoration: none; }
         padding: 1rem;
     }
     
+    /* Courses section mobile adjustments */
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .course-card {
+        height: 450px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    /* Contact section mobile */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .contact-container {
+        padding: 0 15px;
+    }
+    
+    /* Footer mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    /* About Us section mobile */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .about-image {
+        order: 1;
+        max-width: 100%;
+        justify-self: center;
+    }
+    
+    /* Career section mobile */
+    .career-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .career-container {
+        padding: 0 15px;
+    }
+    
+    /* Navigation mobile improvements */
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    nav ul {
+        gap: 15px;
+    }
+    
+    nav ul li a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    /* Code window mobile */
+    .code-window {
+        height: 350px;
+        margin: 20px 0;
+    }
+    
+    .code-header {
+        padding: 8px 15px;
+    }
+    
+    .code-content {
+        font-size: 13px;
+        padding: 15px;
+        line-height: 1.4;
+    }
+    
     /* Mobile instructor section fixes */
     .instructor-slider {
         grid-template-columns: 1fr;
@@ -3559,14 +3724,14 @@ a.btn:active { text-decoration: none; }
     .instructor-content {
         flex-direction: column;
         text-align: center;
-        padding: 20px;
-        gap: 20px;
+        padding: 15px;
+        gap: 12px;
     }
     
     .instructor-image {
         width: 100%;
-        height: 250px;
-        max-width: 300px;
+        height: 200px;
+        max-width: 280px;
         margin: 0 auto;
     }
     
@@ -3615,8 +3780,8 @@ a.btn:active { text-decoration: none; }
     }
     
     .instructor-image {
-        height: 220px;
-        max-width: 280px;
+        height: 180px;
+        max-width: 260px;
     }
     
     .instructor-name {
@@ -3674,8 +3839,8 @@ a.btn:active { text-decoration: none; }
     }
     
     .instructor-image {
-        height: 200px;
-        max-width: 250px;
+        height: 160px;
+        max-width: 220px;
     }
     
     .instructor-name h3 {
@@ -3692,78 +3857,38 @@ a.btn:active { text-decoration: none; }
     }
 }
 
-/* ========== CHATBOT STYLES ========== */
-
-/* Hide the checkbox */
+/* =============== CHATBOT STYLES (Non-interfering) =============== */
 .chatbot-checkbox {
     display: none;
 }
 
-/* Chatbot Container */
 .chatbot-container {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 15px;
+    z-index: 10000;
 }
 
-/* Chatbot Button */
 .chatbot-button {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.3s ease;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    animation: chatbotPulse 3s ease-in-out infinite;
 }
 
-.chatbot-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.4s ease;
-}
-
-.chatbot-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(124, 58, 237, 0.6);
-}
-
-.chatbot-button:hover::before {
-    width: 120px;
-    height: 120px;
-}
-
-.chatbot-button:active {
-    transform: translateY(-1px) scale(1.02);
-}
-
-/* Icon animations */
 .chatbot-icon,
 .chatbot-close {
-    font-size: 1.5rem;
-    color: var(--text-primary);
+    font-size: 1.4rem;
+    color: white;
     transition: all 0.3s ease;
     position: absolute;
-    z-index: 2;
 }
 
 .chatbot-close {
@@ -3771,7 +3896,6 @@ a.btn:active { text-decoration: none; }
     transform: rotate(90deg);
 }
 
-/* CSS-only active state using checkbox */
 .chatbot-checkbox:checked ~ .chatbot-container .chatbot-button .chatbot-icon {
     opacity: 0;
     transform: rotate(-90deg);
@@ -3782,79 +3906,39 @@ a.btn:active { text-decoration: none; }
     transform: rotate(0deg);
 }
 
-/* Tooltip */
-.chatbot-tooltip {
-    background: rgba(0, 0, 0, 0.9);
-    color: var(--text-primary);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(10px);
-    transition: all 0.3s ease;
-    position: relative;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.chatbot-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: -5px;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border: 5px solid transparent;
-    border-left-color: rgba(0, 0, 0, 0.9);
-}
-
-.chatbot-button:hover + .chatbot-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-}
-
-/* Chatbot Widget */
 .chatbot-widget {
     position: fixed;
-    bottom: 110px;
+    bottom: 100px;
     right: 30px;
     width: 350px;
     height: 500px;
     background: var(--bg-secondary);
     border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 999;
+    transform: translateY(20px) scale(0.9);
+    transition: all 0.4s ease;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-/* CSS-only widget visibility using checkbox */
 .chatbot-checkbox:checked ~ .chatbot-widget {
     opacity: 1;
     visibility: visible;
     transform: translateY(0) scale(1);
 }
 
-/* Widget Header */
 .chatbot-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     padding: 20px;
-    color: var(--text-primary);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .chatbot-header-content {
@@ -3871,8 +3955,6 @@ a.btn:active { text-decoration: none; }
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    animation: chatbotAvatarBounce 2s ease-in-out infinite;
 }
 
 .chatbot-info h4 {
@@ -3884,68 +3966,34 @@ a.btn:active { text-decoration: none; }
 .chatbot-status {
     font-size: 0.85rem;
     opacity: 0.9;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.chatbot-status::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: #10b981;
-    border-radius: 50%;
-    animation: statusBlink 2s ease-in-out infinite;
 }
 
 .chatbot-minimize {
     background: rgba(255, 255, 255, 0.2);
     border: none;
-    color: var(--text-primary);
+    color: white;
     width: 32px;
     height: 32px;
     border-radius: 8px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.chatbot-minimize:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
-}
-
-/* Messages Area */
 .chatbot-messages {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
+    background: var(--bg-primary);
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background: var(--bg-primary);
 }
 
-.chatbot-messages::-webkit-scrollbar {
-    width: 6px;
-}
-
-.chatbot-messages::-webkit-scrollbar-thumb {
-    background: var(--primary-light);
-    border-radius: 3px;
-}
-
-.chatbot-messages::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* Message Styling */
 .message {
     display: flex;
     gap: 10px;
-    animation: messageSlideIn 0.3s ease;
 }
 
 .message.user-message {
@@ -3964,8 +4012,8 @@ a.btn:active { text-decoration: none; }
 }
 
 .bot-message .message-avatar {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
-    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
 }
 
 .user-message .message-avatar {
@@ -3975,16 +4023,13 @@ a.btn:active { text-decoration: none; }
 
 .message-content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
 }
 
 .message-content p {
     background: rgba(255, 255, 255, 0.05);
     padding: 12px 16px;
     border-radius: 18px;
-    margin: 0;
+    margin: 0 0 5px 0;
     font-size: 0.9rem;
     line-height: 1.4;
     color: var(--text-primary);
@@ -3992,7 +4037,7 @@ a.btn:active { text-decoration: none; }
 }
 
 .bot-message .message-content p {
-    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(139, 92, 246, 0.05));
     border-color: rgba(124, 58, 237, 0.2);
     border-radius: 18px 18px 18px 4px;
 }
@@ -4013,7 +4058,6 @@ a.btn:active { text-decoration: none; }
     text-align: right;
 }
 
-/* Input Area */
 .chatbot-input-area {
     padding: 20px;
     background: var(--bg-secondary);
@@ -4021,10 +4065,12 @@ a.btn:active { text-decoration: none; }
     display: flex;
     gap: 12px;
     align-items: center;
+    flex-direction: column;
 }
 
 .chatbot-input {
     flex: 1;
+    width: 100%;
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 25px;
@@ -4032,68 +4078,23 @@ a.btn:active { text-decoration: none; }
     color: var(--text-primary);
     font-size: 0.9rem;
     outline: none;
-    transition: all 0.3s ease;
     font-family: var(--font-inter);
-}
-
-.chatbot-input:focus {
-    border-color: var(--primary-light);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
-}
-
-.chatbot-input::placeholder {
-    color: var(--text-muted);
 }
 
 .chatbot-send {
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
     border: none;
     border-radius: 50%;
-    color: var(--text-primary);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
     font-size: 1rem;
-}
-
-.chatbot-send:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
-}
-
-.chatbot-send:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-}
-
-/* Demo messages styling */
-.demo-message {
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* Progressive animation when chatbot is opened */
-.chatbot-checkbox:checked ~ .chatbot-widget .demo-message:nth-child(3) {
-    animation: demoMessageAppear 0.6s ease 1s forwards;
-}
-
-.chatbot-checkbox:checked ~ .chatbot-widget .demo-message:nth-child(4) {
-    animation: demoMessageAppear 0.6s ease 2.5s forwards;
-}
-
-.chatbot-checkbox:checked ~ .chatbot-widget .demo-message:nth-child(5) {
-    animation: demoMessageAppear 0.6s ease 4s forwards;
-}
-
-.chatbot-checkbox:checked ~ .chatbot-widget .demo-message:nth-child(6) {
-    animation: demoMessageAppear 0.6s ease 5.5s forwards;
+    position: absolute;
+    right: 20px;
 }
 
 .demo-notice {
@@ -4107,66 +4108,34 @@ a.btn:active { text-decoration: none; }
     font-size: 0.75rem;
 }
 
-.chatbot-input[readonly] {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-@keyframes demoMessageAppear {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
+/* Chatbot tablet responsiveness */
+@media (max-width: 1024px) {
+    .chatbot-widget {
+        width: 380px;
+        height: 500px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    
+    .chatbot-header {
+        padding: 18px;
     }
-}
-
-/* Animations */
-@keyframes chatbotPulse {
-    0%, 100% {
-        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4), 0 0 0 0 rgba(124, 58, 237, 0.4);
-    }
-    50% {
-        box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4), 0 0 0 10px rgba(124, 58, 237, 0);
+    
+    .chatbot-messages {
+        padding: 18px;
     }
 }
 
-@keyframes chatbotAvatarBounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
-}
-
-@keyframes statusBlink {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.3;
-    }
-}
-
-@keyframes messageSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Mobile Responsive */
+/* Mobile chatbot responsive - separate from main responsive styles */
 @media (max-width: 768px) {
     .chatbot-container {
         bottom: 20px;
         right: 20px;
+        z-index: 10000;
+    }
+    
+    .chatbot-button {
+        width: 56px;
+        height: 56px;
+        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
     }
     
     .chatbot-widget {
@@ -4175,680 +4144,75 @@ a.btn:active { text-decoration: none; }
         right: 20px;
         bottom: 90px;
         max-width: 350px;
+        max-height: 500px;
     }
     
-    .chatbot-tooltip {
-        display: none;
+    .chatbot-header {
+        padding: 16px;
     }
     
-    .chatbot-button {
-        width: 56px;
-        height: 56px;
+    .chatbot-messages {
+        padding: 16px;
+        gap: 12px;
     }
     
-    .chatbot-icon,
-    .chatbot-close {
-        font-size: 1.3rem;
+    .chatbot-input-area {
+        padding: 16px;
+    }
+    
+    .message-content p {
+        font-size: 0.85rem;
+        padding: 10px 14px;
     }
 }
 
 @media (max-width: 480px) {
-    .chatbot-widget {
-        width: calc(100vw - 20px);
-        right: 10px;
-        left: 10px;
-        height: 60vh;
-    }
-    
     .chatbot-container {
-        right: 15px;
         bottom: 15px;
-    }
-}
-        max-width: 100%;
+        right: 15px;
     }
     
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
+    .chatbot-button {
+        width: 52px;
+        height: 52px;
     }
     
-    .hero-title { 
-        font-size: clamp(1.8rem, 6vw, 2.4rem);
-        line-height: 1.2;
-        margin-bottom: 1rem;
+    .chatbot-widget {
+        width: calc(100vw - 30px);
+        right: 15px;
+        left: 15px;
+        height: 60vh;
+        max-height: 450px;
     }
     
-    .hero-subtitle { 
+    .chatbot-header {
+        padding: 14px;
+    }
+    
+    .chatbot-header h4 {
         font-size: 1rem;
-        line-height: 1.5;
-        margin-bottom: 1.5rem;
-        padding: 0 0.5rem;
     }
     
-    .dynamic-text {
-        min-width: 120px;
-        padding-right: 5px;
+    .chatbot-avatar {
+        width: 36px;
+        height: 36px;
     }
     
-    /* Button improvements */
-    .cta-buttons { 
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto 2rem;
+    .chatbot-messages {
+        padding: 14px;
     }
     
-    .btn { 
-        width: 100%; 
-        justify-content: center;
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
+    .chatbot-input-area {
+        padding: 14px;
     }
     
-    /* Stats section */
-    .stats { 
-        flex-direction: column; 
-        gap: 1.5rem;
-        padding: 0 1rem;
-    }
-    
-    .stat-item {
-        padding: 1rem;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.02);
-    }
-    
-    /* Code window improvements */
-    .code-window { 
-        font-size: 0.75rem;
-        margin-top: 1rem;
-        max-width: 100%;
-        overflow: hidden;
-        transform: none !important;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-    }
-    
-    .code-window:hover {
-        transform: none !important;
-    }
-    
-    .code-body {
-        max-height: 220px;
-        min-height: 180px;
-        padding: 0.75rem;
-        overflow-x: auto;
-    }
-    
-    .code-content {
-        font-size: 0.65rem;
-        animation: scrollCodeMobile 35s ease-in-out infinite;
-        animation-delay: 22s;
-        white-space: nowrap;
-    }
-    
-    .code-line {
-        animation: typeCodeLineMobile 1.8s ease-out forwards, fadeIn 0.3s ease-out forwards;
-        opacity: 0;
-        width: 0;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    
-    .code-header {
-        padding: 0.5rem 0.75rem;
-    }
-    
-    .file-name {
-        font-size: 0.7rem;
-        position: static;
-        transform: none;
-    }
-    
-    /* Learning journey section */
-    .learning-journey-section {
-        padding: 3rem 1rem;
-    }
-    
-    .learning-journey-section h1 {
-        font-size: clamp(1.8rem, 5vw, 2.2rem);
-        line-height: 1.2;
-        margin-bottom: 1rem;
-    }
-    
-    .learning-journey-section p {
-        font-size: 1rem;
-        line-height: 1.5;
-        margin-bottom: 2rem;
-        padding: 0 1rem;
-    }
-    
-    /* Courses section */
-    .courses-section {
-        padding: 3rem 1rem;
-    }
-    
-    .courses-header h2 {
-        font-size: clamp(1.8rem, 5vw, 2.2rem);
-        line-height: 1.2;
-    }
-    
-    .courses-header p {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-    
-    .courses-grid {
-        grid-template-columns: 1fr;
-        padding: 0 0.5rem;
-        gap: 1.5rem;
-    }
-    
-    .course-card {
-        margin: 0;
-        max-width: 100%;
-    }
-    
-    /* Instructor section */
-    .instructor-section {
-        padding: 3rem 1rem;
-    }
-    
-    .instructor-content { 
-        flex-direction: column; 
-        gap: 1.5rem; 
-        padding: 2rem 1rem;
-        text-align: center;
-    }
-    
-    .instructor-image { 
-        width: 100%; 
-        height: clamp(180px, 20vw, 240px);
-        max-width: 300px;
-        margin: 0 auto;
-    }
-    
-    .instructor-photo {
-        width: 100%;
-        height: 100%;
-        border-radius: 12px;
-    }
-    
-    .instructor-name h3 {
-        font-size: 1.6rem;
-    }
-    
-    .instructor-title {
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    
-    .instructor-tags {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    
-    .tag {
+    .message-content p {
         font-size: 0.8rem;
-        padding: 0.3rem 0.8rem;
+        padding: 8px 12px;
     }
     
-    .instructor-bio {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        text-align: center;
-        margin-top: 1rem;
-    }
-    
-    /* Stack instructor cards vertically on mobile */
-    .instructor-slider {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        overflow: visible;
-    }
-    
-    .instructor-slide {
-        opacity: 1;
-        transform: none;
-    }
-    
-    /* Career section */
-    .career-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
-        padding: 0 1rem;
-    }
-    
-    .logo-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        max-width: 280px;
-        margin: 0 auto;
-    }
-    
-    .logo-item {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .tech-logo {
-        width: 25px;
-        height: 25px;
-    }
-    
-    /* Branding section */
-    .branding-section {
-        padding: 4rem 1rem;
-        min-height: 180px;
-    }
-    
-    .coder-army-text {
-        font-size: clamp(2.5rem, 8vw, 4rem);
-    }
-    
-    /* Contact section */
-    .contact-section {
-        padding: 3rem 1rem;
-    }
-    
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .email-animation {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .email-envelope {
-        width: 140px;
-        height: 100px;
-    }
-    
-    /* Footer improvements */
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-        padding: 0 1rem;
-    }
-    
-    .footer-brand {
-        align-items: center;
-    }
-    
-    .footer-description {
-        max-width: none;
-        text-align: center;
-    }
-    
-    .social-links-footer {
-        justify-content: center;
-    }
-}
-
-/* Extra-small screens: tighter hero and code window */
-@media (max-width: 640px) {
-    /* Navigation improvements */
-    .nav-container {
-        padding: 0.5rem 0.75rem;
-    }
-    
-    .logo {
-        font-size: 1.1rem;
-    }
-    
-    .nav-menu {
-        padding: 1.5rem 1rem;
-        top: 58px;
-    }
-    
-    .nav-link {
-        font-size: 1rem;
-        padding: 0.8rem 0;
-    }
-    
-    /* Hero section */
-    .hero { 
-        padding-top: 70px;
-    }
-    
-    .hero-container {
-        padding: 0.75rem;
-    }
-    
-    .hero-title {
-        font-size: clamp(1.6rem, 6vw, 2rem);
-        line-height: 1.1;
-        margin-bottom: 0.8rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 0.9rem;
-        line-height: 1.4;
-        margin-bottom: 1.2rem;
-        padding: 0 0.25rem;
-    }
-    
-    .dynamic-text { 
-        min-width: 100px; 
-        padding-right: 5px; 
-    }
-    
-    /* Button and CTA improvements */
-    .cta-buttons {
-        max-width: 260px;
-        gap: 0.8rem;
-    }
-    
-    .btn {
-        padding: 0.7rem 1.2rem;
+    .chatbot-input {
         font-size: 0.85rem;
-    }
-    
-    /* Stats section */
-    .stats {
-        gap: 1rem;
-        padding: 0 0.5rem;
-    }
-    
-    .stat-item {
-        padding: 0.8rem;
-    }
-    
-    .stat-value {
-        font-size: 1.5rem;
-    }
-    
-    .stat-label {
-        font-size: 0.8rem;
-    }
-    
-    /* Code window */
-    .code-window {
-        font-size: 0.7rem;
-        margin-top: 0.8rem;
-        transform: none !important;
-        border-radius: 6px;
-    }
-    
-    .code-window:hover {
-        transform: none !important;
-    }
-    
-    .code-body { 
-        max-height: 200px; 
-        min-height: 160px;
-        padding: 0.5rem;
-        overflow-x: auto;
-    }
-    
-    .code-content { 
-        font-size: 0.6rem;
-        animation: scrollCodeMobile 35s ease-in-out infinite;
-        animation-delay: 22s;
-        white-space: nowrap;
-    }
-    
-    .code-line {
-        animation: typeCodeLineMobile 1.6s ease-out forwards, fadeIn 0.3s ease-out forwards;
-        opacity: 0;
-        width: 0;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-    
-    .code-header {
-        padding: 0.4rem 0.5rem;
-    }
-    
-    @keyframes scrollCodeMobile {
-        0% { transform: translateY(0); }
-        15% { transform: translateY(0); }
-        45% { transform: translateY(-50%); }
-        75% { transform: translateY(calc(-100% + 180px)); }
-        85% { transform: translateY(calc(-100% + 180px)); }
-        95% { transform: translateY(0); }
-        100% { transform: translateY(0); }
-    }
-    
-    /* Section improvements */
-    .learning-journey-section {
-        padding: 2rem 0.75rem;
-    }
-    
-    .learning-journey-section h1 {
-        font-size: clamp(1.5rem, 5vw, 1.9rem);
-    }
-    
-    .learning-journey-section p {
-        font-size: 0.9rem;
-        padding: 0 0.5rem;
-    }
-    
-    .cta-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    .courses-section {
-        padding: 2rem 0.75rem;
-    }
-    
-    .courses-header h2 {
-        font-size: clamp(1.5rem, 5vw, 1.9rem);
-    }
-    
-    .courses-header p {
-        font-size: 0.9rem;
-        padding: 0 0.5rem;
-    }
-    
-    .instructor-section {
-        padding: 2rem 0.75rem;
-    }
-    
-    .instructor-content {
-        padding: 1.5rem 0.5rem;
-    }
-    
-    .instructor-image {
-        height: clamp(140px, 18vw, 180px);
-        max-width: 250px;
-    }
-    
-    .instructor-photo {
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-    }
-    
-    .instructor-name h3 {
-        font-size: 1.4rem;
-    }
-    
-    .instructor-bio {
-        font-size: 0.85rem;
-    }
-    
-    .career-section {
-        padding: 2rem 0.75rem;
-    }
-    
-    .career-content {
-        gap: 2rem;
-    }
-    
-    .contact-section {
-        padding: 2rem 0.75rem;
-    }
-    
-    .footer-section {
-        padding: 2rem 0.75rem 1rem;
-    }
-    
-    .footer-content {
-        padding: 0 0.5rem;
-    }
-}
-
-/* Additional mobile fixes for all screen sizes */
-@media (max-width: 768px) {
-    /* Ensure all containers don't overflow */
-    .hero-container,
-    .courses-section .courses-grid,
-    .instructor-section .instructor-container,
-    .contact-container,
-    .footer-container {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    
-    /* Fix instructor card overflow issues */
-    .instructor-content {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 1.5rem 0.5rem;
-        box-sizing: border-box;
-    }
-    
-    .instructor-details {
-        width: 100%;
-        max-width: 100%;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-    
-    .instructor-name {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        text-align: center;
-    }
-    
-    .instructor-name h3 {
-        font-size: clamp(1.3rem, 4vw, 1.6rem);
-        line-height: 1.2;
-        text-align: center;
-        word-break: break-word;
-    }
-    
-    .instructor-title {
-        text-align: center;
-        width: 100%;
-    }
-    
-    .instructor-title .role,
-    .instructor-title .experience {
-        font-size: clamp(0.9rem, 3vw, 1rem);
-        text-align: center;
-        display: block;
-        width: 100%;
-    }
-    
-    .instructor-bio {
-        font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-        line-height: 1.4;
-        text-align: center;
-        margin: 1rem 0;
-        -webkit-line-clamp: none;
-        display: block;
-        overflow: visible;
-    }
-    
-    /* Fix course card issues */
-    .course-card {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 0 1rem 0;
-        box-sizing: border-box;
-        height: auto;
-        min-height: 500px;
-    }
-    
-    .course-content {
-        padding: 1rem;
-        width: 100%;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: calc(100% - 200px);
-    }
-    
-    .course-title {
-        font-size: clamp(1.1rem, 3vw, 1.3rem);
-        line-height: 1.2;
-        word-break: break-word;
-        -webkit-line-clamp: 2;
-    }
-    
-    /* Ensure mobile button is visible in additional mobile media queries */
-    .mobile-start-btn {
-        display: flex !important;
-    }
-    
-    /* Fix form issues */
-    .contact-form {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .form-group {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    /* Prevent text overflow */
-    h1, h2, h3, h4, h5, h6 {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-    
-    p, span, div {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-    
-    /* Fix social links */
-    .social-links,
-    .social-links-footer {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-    }
-    
-    /* Ensure buttons don't overflow */
-    .btn,
-    .cta-button,
-    .submit-button {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-        box-sizing: border-box;
-        font-size: clamp(0.85rem, 2.5vw, 1rem);
+        padding: 10px 16px;
     }
 }
