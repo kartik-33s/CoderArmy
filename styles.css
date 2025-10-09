@@ -1758,7 +1758,7 @@ a.btn:active { text-decoration: none; }
 /* Keep image zoom effect on hover (front face only) */
 .card-face.front .course-image-bg { transition: transform 0.3s ease; }
 
-/* Small arrow link button */
+/* Small arrow link button (mobile-only: hidden by default) */
 .card-arrow {
     position: absolute;
     top: 12px;
@@ -1766,7 +1766,7 @@ a.btn:active { text-decoration: none; }
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    display: flex;
+    display: none; /* hidden on desktop */
     align-items: center;
     justify-content: center;
     color: var(--text-primary);
@@ -1785,9 +1785,12 @@ a.btn:active { text-decoration: none; }
 
 @media (max-width: 768px) {
     .card-arrow {
+        display: flex !important; /* show only on mobile */
         width: 44px;
         height: 44px;
     }
+    /* Avoid duplicate arrows when faces are stacked on mobile */
+    .card-face.back .card-arrow { display: none !important; }
 }
 
 @media (max-width: 768px) {
