@@ -1995,7 +1995,7 @@ a.btn:active { text-decoration: none; }
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
-    display: none;
+    display: none; /* default hidden; shown via media queries */
     align-items: center;
     justify-content: center;
     gap: 8px;
@@ -2005,6 +2005,19 @@ a.btn:active { text-decoration: none; }
     box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
     position: relative;
     overflow: hidden;
+}
+
+/* Force visible on small screens (placed after base rule to win cascade) */
+@media (max-width: 768px) {
+    .course-card .mobile-start-btn {
+        display: flex !important;
+    }
+    /* ensure content and button never get clipped */
+    .course-content {
+        min-height: calc(100% - 220px);
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .mobile-start-btn::before {
@@ -2113,11 +2126,45 @@ a.btn:active { text-decoration: none; }
     z-index: 2;
 }
 
-.career-content {
+ .career-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
+}
+
+/* Career section responsiveness */
+@media (max-width: 1024px) {
+    .career-content {
+        gap: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .career-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .career-text {
+        text-align: center;
+    }
+    .career-text h2 br {
+        display: none; /* avoid forced line breaks on small screens */
+    }
+    .career-text p {
+        margin-bottom: 24px;
+    }
+    .career-logos {
+        justify-self: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .career-text h2 {
+        font-size: clamp(1.8rem, 8vw, 2.2rem);
+        line-height: 1.25;
+    }
 }
 
 .career-text h2 {
@@ -2181,6 +2228,49 @@ a.btn:active { text-decoration: none; }
     gap: 30px;
     max-width: 500px;
     margin-left: auto;
+}
+
+/* Responsive logo grid for career section */
+@media (max-width: 1024px) {
+    .logo-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+    .logo-item {
+        width: 56px;
+        height: 56px;
+    }
+    .tech-logo {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        max-width: 300px;
+    }
+    .logo-item {
+        width: 52px;
+        height: 52px;
+    }
+    .tech-logo {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .logo-item {
