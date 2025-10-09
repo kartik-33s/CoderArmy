@@ -1749,12 +1749,20 @@ a.btn:active { text-decoration: none; }
 .card-face.front .course-image-bg { transition: transform 0.3s ease; }
 
 @media (max-width: 768px) {
+    /* Force single-column grid to avoid any overlap */
+    .courses-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
     .course-card { 
+        display: block; /* simpler flow for mobile */
         height: auto; /* Let card grow to fit content on mobile */
         overflow: visible; /* don't clip button or stacked details */
     }
 
     .card-inner {
+        display: block;
         height: auto;
     }
     
@@ -1768,6 +1776,7 @@ a.btn:active { text-decoration: none; }
         transform: none !important; 
         -webkit-backface-visibility: visible; 
         backface-visibility: visible; 
+        width: 100%;
     }
     .course-card .card-face.back { 
         display: block; 
@@ -1810,6 +1819,9 @@ a.btn:active { text-decoration: none; }
     .nav-container {
         padding: 0.5rem 0.75rem;
     }
+    /* Extra spacing between stacked cards to avoid visual overlap under heavy shadows */
+    .courses-grid { gap: 20px !important; }
+    .course-card { margin: 0 0 4px 0; }
     
     .logo {
         font-size: 1.1rem;
