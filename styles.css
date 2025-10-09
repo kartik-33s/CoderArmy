@@ -1750,14 +1750,32 @@ a.btn:active { text-decoration: none; }
 
 @media (max-width: 768px) {
     .course-card { 
-        height: 520px; /* Increased height to accommodate button */
+        height: auto; /* Let card grow to fit content on mobile */
+    }
+
+    .card-inner {
+        height: auto;
     }
     
-    /* Disable flip on touch devices */
-    .course-card:hover .card-inner { 
+    /* Disable flip on touch devices and stack faces */
+    .course-card .card-inner { 
         transform: none; 
     }
-    
+    .course-card .card-face { 
+        position: static; 
+        inset: auto; 
+        transform: none !important; 
+        -webkit-backface-visibility: visible; 
+        backface-visibility: visible; 
+    }
+    .course-card .card-face.back { 
+        display: block; 
+        margin-top: 12px; 
+        border: 1px solid rgba(139, 92, 246, 0.15); 
+        border-radius: 12px; 
+        background: linear-gradient(180deg, rgba(124, 58, 237, 0.10) 0%, rgba(26, 26, 46, 0.95) 100%);
+    }
+
     /* Show mobile Start Learning button */
     .mobile-start-btn {
         display: flex;
@@ -1766,8 +1784,9 @@ a.btn:active { text-decoration: none; }
     /* Adjust course content padding for mobile */
     .course-content {
         padding: 20px;
-        justify-content: space-between;
-        height: calc(100% - 220px); /* Account for image height */
+        justify-content: flex-start;
+        gap: 10px;
+        height: auto; /* allow content to grow */
     }
     
     /* Improve mobile course card styling */
