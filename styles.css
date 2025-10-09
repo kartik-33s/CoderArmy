@@ -2064,12 +2064,17 @@ a.btn:active { text-decoration: none; }
 @media (max-width: 768px) {
     .course-card .mobile-start-btn {
         display: flex !important;
+        margin-top: 16px;
+        z-index: 1;
+        text-align: center;
     }
     /* ensure content and button never get clipped */
     .course-content {
-        min-height: calc(100% - 220px);
+        min-height: initial; /* allow natural height; do not force calculation */
         display: flex;
         flex-direction: column;
+        padding-bottom: 16px; /* extra space so the button is not tight to the border */
+        gap: 12px;
     }
 }
 
