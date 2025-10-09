@@ -1758,6 +1758,38 @@ a.btn:active { text-decoration: none; }
 /* Keep image zoom effect on hover (front face only) */
 .card-face.front .course-image-bg { transition: transform 0.3s ease; }
 
+/* Small arrow link button */
+.card-arrow {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 18px rgba(124, 58, 237, 0.35);
+    z-index: 4;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.card-arrow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(124, 58, 237, 0.45);
+}
+
+@media (max-width: 768px) {
+    .card-arrow {
+        width: 44px;
+        height: 44px;
+    }
+}
+
 @media (max-width: 768px) {
     /* Force single-column grid to avoid any overlap */
     .courses-grid {
