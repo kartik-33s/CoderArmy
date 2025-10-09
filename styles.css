@@ -1753,12 +1753,15 @@ a.btn:active { text-decoration: none; }
     .courses-grid {
         grid-template-columns: 1fr !important;
         gap: 24px !important;
+        grid-auto-rows: auto;
     }
 
     .course-card { 
         display: block; /* simpler flow for mobile */
         height: auto; /* Let card grow to fit content on mobile */
-        overflow: visible; /* don't clip button or stacked details */
+        overflow: hidden; /* keep button and content within card bounds */
+        position: relative;
+        z-index: 0;
     }
 
     .card-inner {
@@ -1790,6 +1793,7 @@ a.btn:active { text-decoration: none; }
     .course-card .mobile-start-btn {
         display: flex !important;
         margin-top: auto; /* push to bottom within course-content */
+        width: 100%;
     }
     
     /* Adjust course content padding for mobile */
@@ -1821,7 +1825,7 @@ a.btn:active { text-decoration: none; }
     }
     /* Extra spacing between stacked cards to avoid visual overlap under heavy shadows */
     .courses-grid { gap: 20px !important; }
-    .course-card { margin: 0 0 4px 0; }
+    .course-card { margin: 0 0 8px 0; }
     
     .logo {
         font-size: 1.1rem;
