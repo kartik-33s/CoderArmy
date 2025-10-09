@@ -1669,6 +1669,14 @@ a.btn:active { text-decoration: none; }
     }
 }
 
+/* Extra safety: disable flips on coarse pointers (most phones/tablets) */
+@media (pointer: coarse) {
+    .course-card .card-inner,
+    .course-card:hover .card-inner {
+        transform: none !important;
+    }
+}
+
 .card-face {
     position: absolute;
     inset: 0;
@@ -1853,7 +1861,7 @@ a.btn:active { text-decoration: none; }
     
     /* Course cards */
     .course-card {
-        height: 500px; /* Adjusted for small screens */
+        height: auto; /* allow card to size naturally on small screens */
     }
     
     .mobile-start-btn {
