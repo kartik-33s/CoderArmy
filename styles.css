@@ -1751,6 +1751,7 @@ a.btn:active { text-decoration: none; }
 @media (max-width: 768px) {
     .course-card { 
         height: auto; /* Let card grow to fit content on mobile */
+        overflow: visible; /* don't clip button or stacked details */
     }
 
     .card-inner {
@@ -1776,9 +1777,10 @@ a.btn:active { text-decoration: none; }
         background: linear-gradient(180deg, rgba(124, 58, 237, 0.10) 0%, rgba(26, 26, 46, 0.95) 100%);
     }
 
-    /* Show mobile Start Learning button */
-    .mobile-start-btn {
-        display: flex;
+    /* Show mobile Start Learning button and pin to end of front content */
+    .course-card .mobile-start-btn {
+        display: flex !important;
+        margin-top: auto; /* push to bottom within course-content */
     }
     
     /* Adjust course content padding for mobile */
@@ -1787,6 +1789,9 @@ a.btn:active { text-decoration: none; }
         justify-content: flex-start;
         gap: 10px;
         height: auto; /* allow content to grow */
+        min-height: unset; /* cancel earlier min-height override */
+        display: flex;
+        flex-direction: column;
     }
     
     /* Improve mobile course card styling */
